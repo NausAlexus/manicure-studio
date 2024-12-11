@@ -1,0 +1,36 @@
+{
+    "header-logo": [
+        {
+            "logo": "Elegance Studio"
+        }
+    ],
+    "nav-link": [
+        {
+            "name": "Услуги",
+            "path": "#"
+        },
+        {
+            "name": "Подарочные сертификаты",
+            "path": "#"
+        },
+        {
+            "name": "Контакты",
+            "path": "#"
+        }
+    ],
+    "nav-social": [
+        {
+            "name": "instagram",
+            "path": "#"
+        },
+        {
+            "name": "mail",
+            "path": "#"
+        }
+    ],
+    "nav-btn": [
+        {
+            "name": "Записаться"
+        }
+    ]
+}
