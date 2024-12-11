@@ -1,7 +1,8 @@
 {
     "header-logo": [
         {
-            "logo": "Elegance Studio"
+            "logo": "Elegance Studio",
+            "path": "#"
         }
     ],
     "nav-link": [
