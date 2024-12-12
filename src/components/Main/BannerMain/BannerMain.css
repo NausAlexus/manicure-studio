@@ -1,0 +1,42 @@
+.banner-main-container {
+    margin-top: 100px;
+    width: 100%;
+    height: 720px;
+    background-position: 50% 50%;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.banner-main-wrapper {
+    width: 100%;
+    height: 100%;
+    background: var(--background-banner-main);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-banner-main);
+    gap: 40px;
+    transition: opacity 1s ease-in-out;
+}
+
+.banner-main-wrapper h1 {
+    font-size: 72px;
+}
+
+.banner-main-wrapper button {
+    border: 2px solid var(--color-header-btn);
+    cursor: pointer;
+    width: 240px;
+    height: 50px;
+    font-size: 17px;
+    background-color: var(--background-header-btn);
+    color: var(--color-header-btn);
+    transition: all 0.3s ease;
+}
+@media (min-width: 1025px) {
+    .banner-main-wrapper button:hover {
+        background-color: var(--background-header-btn-hover);
+        color: var(--color-header-btn-hover);
+    }
+}

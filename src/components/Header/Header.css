@@ -6,7 +6,8 @@
     align-items: center;
     justify-content: space-between;
     position: fixed;
-    transition: top 0.3s ease-in;
+    transition: top 0.3s ease-in,
+                opacity 0.5s ease-in-out;
 }
 .header-logo {
     font-size: 32px;
@@ -40,7 +41,7 @@
     list-style: none;
 }
 .header-social ul li a {
-    font-size: 20px;
+    font-size: 21px;
     color: var(--color-social);
 }
 .header-social ul li,

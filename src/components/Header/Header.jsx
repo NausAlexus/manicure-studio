@@ -2,18 +2,20 @@ import './Header.css';
 import { FaInstagram } from "react-icons/fa6";
 import { GrMailOption } from "react-icons/gr";
 import HeaderConfig from "../../config/header-config.json";
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 function Header() {
 
     // Состояния________________________________________________
     const [headerTop, setHeaderTop] = useState(0);
+    const [isVisible, setIsVisible] = useState(false); // Состояние для видимости
+    const headerRef = useRef(null); // Реф для отслеживания заголовка
 
     // Вывод данных из config_____________________________________
     const logoText = HeaderConfig['header-logo'][0];
     const navLinks = HeaderConfig['nav-link'];
     const socialPath = HeaderConfig['nav-social'][0];
-    const headerBtnText = HeaderConfig['nav-btn'][0].name;
+    const headerBtnText = HeaderConfig['nav-btn'][0].text;
 
     // Функции__________________________________________________
     const handleScroll = () => {
@@ -23,6 +25,26 @@ function Header() {
             setHeaderTop(0);
         }
     };
+
+    useEffect(() => {
+        // Создаём Intersection Observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                setIsVisible(entry.isIntersecting); // Обновляем состояние видимости
+            });
+        });
+
+        if (headerRef.current) {
+            observer.observe(headerRef.current); // Наблюдаем за элементом
+        }
+
+        // Удаляем наблюдателя при размонтировании
+        return () => {
+            if (headerRef.current) {
+                observer.unobserve(headerRef.current);
+            }
+        };
+    }, [headerRef]);
 
     // Побочные эффекты_________________________________________
     useEffect(() => {
@@ -34,7 +56,7 @@ function Header() {
     }, []);
 
 	return (
-        <header className='header-container' style={{ top: `${headerTop}px` }}>
+        <header ref={headerRef} className='header-container' style={{top: `${headerTop}px`, opacity: isVisible ? 1 : 0}}>
             <a href={logoText.path} className='header-logo'>{logoText.logo}</a>
             <div className="header-content">
                 <nav className='nav'>
