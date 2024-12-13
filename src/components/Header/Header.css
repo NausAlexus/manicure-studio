@@ -12,7 +12,7 @@
 .header-logo {
     font-size: 32px;
     font-weight: 600;
-    color: var(--color-text);
+    color: var(--color-logo);
     text-decoration: none;
     transition: transform 0.3s ease;
 }

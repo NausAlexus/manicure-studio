@@ -62,7 +62,7 @@ function Header() {
                 <nav className='nav'>
                     <ul>
                         {navLinks.map(link => (
-                            <li key={link.name}><a href={link.path}>{link.name}</a></li>
+                            <li key={link.id}><a href={link.path}>{link.name}</a></li>
                         ))}
                     </ul>
                 </nav>

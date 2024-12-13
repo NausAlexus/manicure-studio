@@ -4,11 +4,16 @@
     --background-header-btn: transparent;
     --background-header-btn-hover: rgb(0, 0, 0);
     --background-banner-main: rgba(255, 255, 255, 0.515);
+    --background-reviews-main: rgb(196, 196, 196);
+    --background-card-reviews-main: rgba(233, 233, 233, 0.571);
 
     --color-text: rgb(135, 135, 135);
+    --color-logo: rgb(0, 0, 0);
     --color-header-btn: rgb(0, 0, 0);
     --color-header-btn-hover: rgb(255, 255, 255);
     --color-social: rgb(0, 0, 0);
     --color-banner-main: rgb(0, 0, 0);
     --color-border-slider-main: rgb(135, 135, 135);
+    --color-title-reviews-main: white;
+    --color-card-reviews-main: rgb(0, 0, 0);
 }
