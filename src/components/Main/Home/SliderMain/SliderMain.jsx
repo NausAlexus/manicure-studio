@@ -3,7 +3,7 @@ import { Autoplay, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
-import mainConfig from "../../../config/main-config.json";
+import mainConfig from "../../../../config/main-config.json";
 import { useState, useEffect, useRef } from 'react';
 
 function SliderMain() {

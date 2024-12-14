@@ -2,14 +2,14 @@
     "header-logo": [
         {
             "logo": "Elegance Studio",
-            "path": "#"
+            "path": "/"
         }
     ],
     "nav-link": [
         {
             "id": "1",
             "name": "Услуги",
-            "path": "#"
+            "path": "/services"
         },
         {
             "id": "2",

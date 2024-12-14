@@ -1,5 +1,5 @@
 import './BannerMain.css';
-import MainConfig from "../../../config/main-config.json";
+import MainConfig from "../../../../config/main-config.json";
 import { useState, useEffect, useRef } from 'react';
 
 function BannerMain() {
