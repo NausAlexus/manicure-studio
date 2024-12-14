@@ -27,10 +27,12 @@ const Footer = () => {
                     </ul>
                 </div>
 
-                <div className="footer-rigth">
+                <div className="footer-right">
                     <ul>
                         {footerRigth.map((item) => (
-                            <li key={item.id}><span className="cursor-pointer">{item.name}</span></li>
+                            <li key={item.id}>
+                                <a href={item.path} className="footer-right-link">{item.name}</a>
+                            </li>
                         ))}
                     </ul>
                 </div>

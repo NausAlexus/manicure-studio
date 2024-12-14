@@ -10,7 +10,7 @@
     list-style: none;
 }
 .footer-left ul,
-.footer-rigth ul {
+.footer-right ul {
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -18,12 +18,11 @@
 .footer-left {
     color: var(--color-footer-left);
 }
-.footer-rigth ul li {
-    transition: all 0.2s ease-in;
-}
-
-.cursor-pointer {
+.footer-right-link {
+    text-decoration: none;
     cursor: pointer;
+    color: var(--color-text);
+    transition: color 0.3s ease;
 }
 .footer-socials ul {
     display: flex;
@@ -35,12 +34,16 @@
     color: var(--color-social);
 }
 .footer-socials ul li {
-    transition: all 0.2s ease-in;
+    transition: opacity 0.3s ease;
 }
 
 @media (min-width: 1025px) {
-    .footer-rigth ul li:hover,
-    .footer-socials ul li:hover {
-        transform: translateY(-3px);
+    .footer-socials ul li:hover{
+        opacity: 0.5;
+    }
+}
+@media (min-width: 1025px) {
+    .footer-right-link:hover:hover{
+        color: var(--color-footer-right-hover);
     }
 }
