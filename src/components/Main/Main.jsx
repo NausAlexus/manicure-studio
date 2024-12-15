@@ -1,14 +1,17 @@
 import './Main.css';
-import BannerMain from './BannerMain/BannerMain';
-import SliderMain from './SliderMain/SliderMain';
-import ReviewsMain from './ReviewsMain/ReviewsMain';
+import Home from './Home/Home';
+import Services from './Services/Services';
+import GiftSertificat from './GiftCertificat/GiftCertificat'
+import { Routes, Route } from 'react-router-dom';
 
 function Main() {
 	return (
 		<>
-			<BannerMain/>
-			<SliderMain/>
-			<ReviewsMain/>
+			<Routes>
+				<Route path="/" element = {<Home/>}/>
+				<Route path="/services" element = {<Services/>}/>
+				<Route path="/setificat" element = {<GiftSertificat/>}/>
+			</Routes>
 		</>
 	);
 };

@@ -3,6 +3,7 @@ import { FaInstagram } from "react-icons/fa6";
 import { GrMailOption } from "react-icons/gr";
 import HeaderConfig from "../../config/header-config.json";
 import { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 
 function Header() {
 
@@ -57,12 +58,12 @@ function Header() {
 
 	return (
         <header ref={headerRef} className='header-container' style={{top: `${headerTop}px`, opacity: isVisible ? 1 : 0}}>
-            <a href={logoText.path} className='header-logo'>{logoText.logo}</a>
+            <Link to={logoText.path} className='header-logo'>{logoText.logo}</Link>
             <div className="header-content">
                 <nav className='nav'>
                     <ul>
                         {navLinks.map(link => (
-                            <li key={link.id}><a href={link.path}>{link.name}</a></li>
+                            <li key={link.id}><Link to={link.path}>{link.name}</Link></li>
                         ))}
                     </ul>
                 </nav>
