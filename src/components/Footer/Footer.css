@@ -22,7 +22,7 @@
     text-decoration: none;
     cursor: pointer;
     color: var(--color-text);
-    transition: color 0.3s ease;
+    transition: opacity 0.3s ease;
 }
 .footer-socials ul {
     display: flex;
@@ -43,7 +43,7 @@
     }
 }
 @media (min-width: 1025px) {
-    .footer-right-link:hover:hover{
-        color: var(--color-footer-right-hover);
+    .footer-right-link:hover{
+        opacity: 0.5;
     }
 }

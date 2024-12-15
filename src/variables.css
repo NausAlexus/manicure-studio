@@ -6,8 +6,11 @@
     --background-banner-main: rgba(255, 255, 255, 0.515);
     --background-reviews-main: rgb(196, 196, 196);
     --background-card-reviews-main: rgba(233, 233, 233, 0.571);
+    --background-service-item: rgba(255, 255, 255, 0.252);
+    --background-service-item-hover: rgba(0, 0, 0, 0.196);
 
-    --color-text: rgb(135, 135, 135);
+
+    --color-text: rgb(0, 0, 0);
     --color-logo: rgb(0, 0, 0);
     --color-header-btn: rgb(0, 0, 0);
     --color-header-btn-hover: rgb(255, 255, 255);
@@ -20,4 +23,5 @@
     --color-footer-right-hover: rgb(0, 0, 0);
     --color-footer-left: rgb(0, 0, 0);
     --color-certificat-title: rgb(0, 0, 0);
+    --color-service-link: white;
 }
