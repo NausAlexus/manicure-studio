@@ -2,6 +2,7 @@ import "./Footer.css";
 import FooterConfig from "../../config/footer-config.json";
 import { FaInstagram } from "react-icons/fa6";
 import { GrMailOption } from "react-icons/gr";
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     // Вывод данных из config_____________________________________
@@ -31,7 +32,7 @@ const Footer = () => {
                     <ul>
                         {footerRigth.map((item) => (
                             <li key={item.id}>
-                                <a href={item.path} className="footer-right-link">{item.name}</a>
+                                <Link to={item.path} className="footer-right-link">{item.name}</Link>
                             </li>
                         ))}
                     </ul>

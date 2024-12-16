@@ -27,9 +27,42 @@
     font-size: 72px;
     text-align: center;
     transition: background 0.3s ease;
+    text-decoration-thickness: 2px;
 }
 @media (min-width: 1025px) {
     .services-link:hover {
         background: var(--background-service-item-hover);
     }
+}
+.services-reviews {
+    margin-top: 100px;
+    background: var(--color-border-service-reviews);
+    padding: 100px 100px;
+    position: relative;
+    transition: opacity 0.5s ease-in-out;
+}
+.services-reviews-img {
+    height: 600px;
+}
+.services-reviews-content {
+    width: 600px;
+    height: 400px;
+    background: var(--color-border-service-reviews-text);
+    top: 50%;
+    right: 100px;
+    position: absolute;
+    z-index: 50;
+    transform: translateY(-50%);
+}
+.services-reviews-content {
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.services-reviews-text{
+    font-size: 42px;
+}
+.services-reviews-name{
+    margin-top: 6px;
 }

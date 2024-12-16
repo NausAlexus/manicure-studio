@@ -33,9 +33,9 @@
     ],
     "services-reviews": [
         {
-            "title": "Маникюр",
-            "img": "https://i.ibb.co/d7D0twd/slide-1-11zon.webp",
-            "path": "#"
+            "img": "https://i.ibb.co/hXvJZzg/service-reviews-img.webp",
+            "text": "«Elegance Studio — это, без сомнения, лучший салон красоты, я определенно рекомендую его».",
+            "name": "— Илванова Т., клиентка салона красоты"
         }
     ]
 }
