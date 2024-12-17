@@ -16,24 +16,26 @@ function SliderMain() {
     const sliderData = mainConfig['slider-main'][0].slide;
 
     useEffect(() => {
-        // Создаём Intersection Observer
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                setIsVisible(entry.isIntersecting); // Обновляем состояние видимости
+                if (entry.isIntersecting && !isVisible) {
+                    setIsVisible(true);
+                } else if (!entry.isIntersecting && isVisible) {
+                    setIsVisible(false);
+                }
             });
         });
 
         if (sliderRef.current) {
-            observer.observe(sliderRef.current); // Наблюдаем за элементом
+            observer.observe(sliderRef.current);
         }
 
-        // Удаляем наблюдателя при размонтировании
         return () => {
             if (sliderRef.current) {
                 observer.unobserve(sliderRef.current);
             }
         };
-    }, []);
+    }, [isVisible]);
 
 	return (
 		<div className='slider-main-container' ref={sliderRef} style={{ opacity: isVisible ? 1 : 0}}>

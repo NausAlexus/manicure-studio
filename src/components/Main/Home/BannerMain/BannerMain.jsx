@@ -13,24 +13,30 @@ function BannerMain() {
     const bannerMainData = MainConfig['banner-main'][0];
 
     useEffect(() => {
-        // Создаём Intersection Observer
         const observer = new IntersectionObserver((entries) => {
+            let shouldBeVisible = false;
+
             entries.forEach(entry => {
-                setIsVisible(entry.isIntersecting); // Обновляем состояние видимости
+                if (entry.isIntersecting) {
+                    shouldBeVisible = true;
+                }
             });
+
+            if (shouldBeVisible !== isVisible) {
+                setIsVisible(shouldBeVisible);
+            }
         });
 
         if (mainRef.current) {
-            observer.observe(mainRef.current); // Наблюдаем за элементом
+            observer.observe(mainRef.current);
         }
 
-        // Удаляем наблюдателя при размонтировании
         return () => {
             if (mainRef.current) {
                 observer.unobserve(mainRef.current);
             }
         };
-    }, [mainRef]);
+    }, [isVisible]);
 
 	return (
 		<div className='banner-main-container' style={{ backgroundImage: `url(${bgUrl})` }}>

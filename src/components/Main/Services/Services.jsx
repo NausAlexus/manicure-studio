@@ -16,29 +16,26 @@ function Services() {
 	const serviceReviewsName = ServicesData['services-reviews'][0].name;
 
 	// useEffect для настройки Intersection Observer
-	useEffect(() => {
-		// Функция для создания и настройки Intersection Observer
-		const observer = new IntersectionObserver((entries) => {
-			entries.forEach(entry => {
-				if (entry.isIntersecting) {
-					// Если элемент оказался в зоне видимости, обновляем состояние
-					setReviewsVisible(true);
-				}
-			});
-		});
+    useEffect(() => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !isReviewsVisible) {
+                    setReviewsVisible(true);
+                }
+            });
+        });
 
-		// Наблюдаем за элементом reviews
-		if (reviewsRef.current) {
-			observer.observe(reviewsRef.current);
-		}
+        const currentRef = reviewsRef.current;
+        if (currentRef) {
+            observer.observe(currentRef);
+        }
 
-		// Очищаем наблюдателя при размонтировании
-		return () => {
-			if (reviewsRef.current) {
-				observer.unobserve(reviewsRef.current);
-			}
-		};
-	}, []);
+        return () => {
+            if (currentRef) {
+                observer.unobserve(currentRef);
+            }
+        };
+    }, [isReviewsVisible]);
 
 	return (
 		<div className='services-container'>

@@ -16,93 +16,78 @@ function ReviewsMain() {
     const reviewsMainTitle = mainConfig['reviews-main'][0].title;
     const reviewsMainData = mainConfig['reviews-main'][0].slide
 
-
-
-
     useEffect(() => {
-        const canvas = document.getElementById('snow-canvas');
-        const ctx = canvas.getContext('2d');
+      // Снежный канвас
+      const canvas = document.getElementById('snow-canvas');
+      const ctx = canvas.getContext('2d');
     
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    
+      const snowflakes = [];
+      const numFlakes = 1000;
+    
+      class Snowflake {
+        constructor() {
+          this.x = Math.random() * canvas.width;
+          this.y = Math.random() * canvas.height;
+          this.size = Math.random() * 1 + 1;
+          this.speed = Math.random() * 1 + 0.05;
+        }
+        update() {
+          this.y += this.speed;
+          if (this.y > canvas.height) {
+            this.y = 0;
+            this.x = Math.random() * canvas.width;
+          }
+        }
+        draw() {
+          ctx.fillStyle = 'rgba(255, 255, 255, 0.511)';
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+          ctx.fill();
+        }
+      }
+    
+      for (let i = 0; i < numFlakes; i++) {
+        snowflakes.push(new Snowflake());
+      }
+    
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let snowflake of snowflakes) {
+          snowflake.update();
+          snowflake.draw();
+        }
+        requestAnimationFrame(animate);
+      }
+      animate();
+    
+      // Обработка изменения размера окна
+      const onResize = () => {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
+      };
+      window.addEventListener('resize', onResize);
     
-        const snowflakes = [];
-        const numFlakes = 1000;
-    
-        // Снежинка
-        class Snowflake {
-          constructor() {
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
-            this.size = Math.random() * 1 + 1;
-            this.speed = Math.random() * 1 + 0.05;
-          }
-    
-          update() {
-            this.y += this.speed;
-            if (this.y > canvas.height) {
-              this.y = 0;
-              this.x = Math.random() * canvas.width;
-            }
-          }
-    
-          draw() {
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.511)';
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-            ctx.fill();
-          }
-        }
-    
-        // Создаем снежинки
-        for (let i = 0; i < numFlakes; i++) {
-          snowflakes.push(new Snowflake());
-        }
-    
-        function animate() {
-          ctx.clearRect(0, 0, canvas.width, canvas.height);
-          for (let snowflake of snowflakes) {
-            snowflake.update();
-            snowflake.draw();
-          }
-          requestAnimationFrame(animate);
-        }
-    
-        animate();
-    
-        // Обработка изменения размера окна
-        window.addEventListener('resize', () => {
-          canvas.width = window.innerWidth;
-          canvas.height = window.innerHeight;
+      // Создаем Intersection Observer
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          setIsVisible(entry.isIntersecting);
         });
+      });
     
-        // Очистка эффекта при размонтировании компонента
-        return () => {
-          window.removeEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-          });
-        };
-    }, []);
-
-    useEffect(() => {
-        // Создаём Intersection Observer
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                setIsVisible(entry.isIntersecting); // Обновляем состояние видимости
-            });
-        });
-
+      if (reviewsRef.current) {
+        observer.observe(reviewsRef.current);
+      }
+    
+      // Очистка эффекта при размонтировании
+      return () => {
+        window.removeEventListener('resize', onResize);
         if (reviewsRef.current) {
-            observer.observe(reviewsRef.current); // Наблюдаем за элементом
+          observer.unobserve(reviewsRef.current);
         }
-
-        // Удаляем наблюдателя при размонтировании
-        return () => {
-            if (reviewsRef.current) {
-                observer.unobserve(reviewsRef.current);
-            }
-        };
+      };
     }, []);
 
 	return (
