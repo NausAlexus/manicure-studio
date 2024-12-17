@@ -19,7 +19,7 @@
         {
             "id": "3",
             "name": "Контакты",
-            "path": "#"
+            "path": "/contacts"
         }
     ],
     "nav-social": [

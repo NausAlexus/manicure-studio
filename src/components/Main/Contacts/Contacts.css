@@ -1,0 +1,45 @@
+.contacts{
+    margin-top: 100px;
+    
+
+}
+.contacts-title{
+    font-size: 52px;
+    text-align: center;
+    color: var(--color-contacts-title);
+    margin-bottom: 30px;
+}
+.contacts-container{
+    display: flex;
+    gap: 100px;
+    
+}
+.contacts-container-left{
+    width: 50%  ;
+    margin-top: 60px;
+
+
+}
+.contacts-container-left-content-title{
+    color: var(--color-contacts-title);
+    padding: 20px 0;
+    border-top: 1px solid black;
+    width: 90%;
+    font-size: 28px;
+}
+.contacts-container-left-content-text{
+    padding-bottom: 20px;
+    color: var(--color-text);
+    font-size: 17px;
+}
+.contacts-container-rigth{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.contacts-container-rigth img{
+height: 550px;
+width: auto;
+
+    
+}
