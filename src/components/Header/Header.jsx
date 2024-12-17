@@ -2,7 +2,7 @@ import './Header.css';
 import { FaInstagram } from "react-icons/fa6";
 import { GrMailOption } from "react-icons/gr";
 import HeaderConfig from "../../config/header-config.json";
-import { useState, useEffect, useRef, memo } from 'react';
+import { useState, useEffect, useRef, memo, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 
 // Оптимизируем компонент NavLink______________
@@ -15,8 +15,6 @@ const NavLink = memo(({ link }) => (
 function Header() {
     // Состояния
     const [headerTop, setHeaderTop] = useState(0);
-    const [isVisible, setIsVisible] = useState(false);
-    const headerRef = useRef(null);
 
     // Вывод данных из config
     const logoText = HeaderConfig['header-logo'][0];
@@ -25,37 +23,19 @@ function Header() {
     const headerBtnText = HeaderConfig['nav-btn'][0].text;
 
     // Функция обработки скролла
-    const handleScroll = () => {
+    const handleScroll = useCallback(() => {
         setHeaderTop(window.scrollY > 50 ? -100 : 0);
-    };
+    }, []);
 
     useEffect(() => {
-        // Создаем Intersection Observer
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                setIsVisible(entry.isIntersecting);
-            });
-        });
-
-        const currentRef = headerRef.current;
-        if (currentRef) {
-            observer.observe(currentRef);
-        }
-
-        // Настройка события скролла
         window.addEventListener('scroll', handleScroll);
-
-        // Очистка эффекта при размонтировании
         return () => {
-            if (currentRef) {
-                observer.unobserve(currentRef);
-            }
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
 
     return (
-        <header ref={headerRef} className='header-container' style={{ top: `${headerTop}px`, opacity: isVisible ? 1 : 0 }}>
+        <header className='header-container' style={{ top: `${headerTop}px`}}>
             <Link to={logoText.path} className='header-logo'>{logoText.logo}</Link>
             <div className="header-content">
                 <nav className='nav'>

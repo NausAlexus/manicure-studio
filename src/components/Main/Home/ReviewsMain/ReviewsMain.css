@@ -3,14 +3,7 @@
     position: relative;
     overflow: hidden;
     text-align: center;
-}
-  
-canvas {
-    background: var(--background-reviews-main);
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 10;
+    background: var(--color-border-reviews-main);
 }
   
 .reviews-main-container h3 {
