@@ -13,7 +13,7 @@ const Contacts = () => {
                         <div className="contacts-container-left-content">
                             {contactsConfig.map((item) => (
                                 <div
-                                    key={item}
+                                    key={item.title}
                                     className="contacts-container-left-content-block"
                                 >
                                     <div className="contacts-container-left-content-title">
