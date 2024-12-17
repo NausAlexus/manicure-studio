@@ -2,81 +2,79 @@ import './Header.css';
 import { FaInstagram } from "react-icons/fa6";
 import { GrMailOption } from "react-icons/gr";
 import HeaderConfig from "../../config/header-config.json";
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, memo } from 'react';
 import { Link } from 'react-router-dom';
 
+// Оптимизируем компонент NavLink______________
+const NavLink = memo(({ link }) => (
+    <li key={link.id}>
+        <Link to={link.path}>{link.name}</Link>
+    </li>
+));
+
 function Header() {
-
-    // Состояния________________________________________________
+    // Состояния
     const [headerTop, setHeaderTop] = useState(0);
-    const [isVisible, setIsVisible] = useState(false); // Состояние для видимости
-    const headerRef = useRef(null); // Реф для отслеживания заголовка
+    const [isVisible, setIsVisible] = useState(false);
+    const headerRef = useRef(null);
 
-    // Вывод данных из config_____________________________________
+    // Вывод данных из config
     const logoText = HeaderConfig['header-logo'][0];
     const navLinks = HeaderConfig['nav-link'];
     const socialPath = HeaderConfig['nav-social'][0];
     const headerBtnText = HeaderConfig['nav-btn'][0].text;
 
-    // Функции__________________________________________________
+    // Функция обработки скролла
     const handleScroll = () => {
-        if (window.scrollY > 50) {
-            setHeaderTop(-100);
-        } else {
-            setHeaderTop(0);
-        }
+        setHeaderTop(window.scrollY > 50 ? -100 : 0);
     };
 
     useEffect(() => {
-        // Создаём Intersection Observer
+        // Создаем Intersection Observer
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                setIsVisible(entry.isIntersecting); // Обновляем состояние видимости
+                setIsVisible(entry.isIntersecting);
             });
         });
 
-        if (headerRef.current) {
-            observer.observe(headerRef.current); // Наблюдаем за элементом
+        const currentRef = headerRef.current;
+        if (currentRef) {
+            observer.observe(currentRef);
         }
 
-        // Удаляем наблюдателя при размонтировании
-        return () => {
-            if (headerRef.current) {
-                observer.unobserve(headerRef.current);
-            }
-        };
-    }, [headerRef]);
-
-    // Побочные эффекты_________________________________________
-    useEffect(() => {
+        // Настройка события скролла
         window.addEventListener('scroll', handleScroll);
-        // Удаляем обработчик события при размонтировании компонента
+
+        // Очистка эффекта при размонтировании
         return () => {
+            if (currentRef) {
+                observer.unobserve(currentRef);
+            }
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
 
-	return (
-        <header ref={headerRef} className='header-container' style={{top: `${headerTop}px`, opacity: isVisible ? 1 : 0}}>
+    return (
+        <header ref={headerRef} className='header-container' style={{ top: `${headerTop}px`, opacity: isVisible ? 1 : 0 }}>
             <Link to={logoText.path} className='header-logo'>{logoText.logo}</Link>
             <div className="header-content">
                 <nav className='nav'>
                     <ul>
                         {navLinks.map(link => (
-                            <li key={link.id}><Link to={link.path}>{link.name}</Link></li>
+                            <NavLink key={link.id} link={link} />
                         ))}
                     </ul>
                 </nav>
                 <div className='header-social'>
-					<ul>
-						<li><a href={socialPath.path}><FaInstagram /></a></li>
-						<li><a href={socialPath.path}><GrMailOption /></a></li>
-					</ul>
+                    <ul>
+                        <li><a href={socialPath.path} aria-label="Instagram"><FaInstagram /></a></li>
+                        <li><a href={socialPath.path} aria-label="Email"><GrMailOption /></a></li>
+                    </ul>
                 </div>
-				<button className='header-btn'>{headerBtnText}</button>
+                <button className='header-btn'>{headerBtnText}</button>
             </div>
         </header>
-	);
+    );
 };
 
 export default Header;

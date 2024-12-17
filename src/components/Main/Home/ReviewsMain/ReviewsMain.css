@@ -3,7 +3,6 @@
     position: relative;
     overflow: hidden;
     text-align: center;
-    transition: opacity 1s ease-in-out;
 }
   
 canvas {

@@ -17,7 +17,6 @@
     justify-content: center;
     color: var(--color-banner-main);
     gap: 40px;
-    transition: opacity 1s ease-in-out;
 }
 
 .banner-main-wrapper h1 {

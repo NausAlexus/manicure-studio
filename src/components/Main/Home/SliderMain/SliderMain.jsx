@@ -4,41 +4,15 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import mainConfig from "../../../../config/main-config.json";
-import { useState, useEffect, useRef } from 'react';
 
 function SliderMain() {
-    // Состояния_____________________________
-    const [isVisible, setIsVisible] = useState(false);
-    const sliderRef = useRef(null);
 
     // Данные________________________________
     const sliderTitle = mainConfig['slider-main'][0].title;
     const sliderData = mainConfig['slider-main'][0].slide;
 
-    useEffect(() => {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && !isVisible) {
-                    setIsVisible(true);
-                } else if (!entry.isIntersecting && isVisible) {
-                    setIsVisible(false);
-                }
-            });
-        });
-
-        if (sliderRef.current) {
-            observer.observe(sliderRef.current);
-        }
-
-        return () => {
-            if (sliderRef.current) {
-                observer.unobserve(sliderRef.current);
-            }
-        };
-    }, [isVisible]);
-
 	return (
-		<div className='slider-main-container' ref={sliderRef} style={{ opacity: isVisible ? 1 : 0}}>
+		<div className='slider-main-container'>
             <h3>{sliderTitle}</h3>
             <Swiper
                 spaceBetween={30}
