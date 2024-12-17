@@ -1,7 +1,5 @@
 .contacts{
     margin-top: 100px;
-    
-
 }
 .contacts-title{
     font-size: 52px;
@@ -11,14 +9,11 @@
 }
 .contacts-container{
     display: flex;
-    gap: 100px;
-    
+    gap: 100px;  
 }
 .contacts-container-left{
     width: 50%  ;
     margin-top: 60px;
-
-
 }
 .contacts-container-left-content-title{
     color: var(--color-contacts-title);
@@ -33,13 +28,22 @@
     font-size: 17px;
 }
 .contacts-container-rigth{
+    height: 500px;
+    width: 500px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    transition: all 0.3s ease;
+}
+@media (min-width: 1025px) {
+    .contacts-container-rigth:hover {
+        transform: scale(1.05);
+        box-shadow: 14px 21px 83px -24px rgba(0,0,0,0.75);
+        -webkit-box-shadow: 14px 21px 83px -24px rgba(0,0,0,0.75);
+        -moz-box-shadow: 14px 21px 83px -24px rgba(0,0,0,0.75);
+    }
 }
 .contacts-container-rigth img{
-height: 550px;
-width: auto;
-
-    
+    height: 100%;
+    width: 100%;
 }
