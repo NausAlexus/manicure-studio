@@ -12,7 +12,7 @@ const GiftCertificat = () => {
                     <div className="certificat-content-left">
                         {certificatConfig.map((item) => (
                             <div
-                                key={item}
+                                key={item.title}
                                 className="certificat-content-title"
                             >
                                 {item.title}
