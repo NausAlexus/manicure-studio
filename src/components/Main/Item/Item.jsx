@@ -13,7 +13,7 @@ function Item(props) {
 					))}
 				</ul>
 			</div>
-			<button className='item-container-btn'>Забронировать визит</button>
+			<button onClick={props.visibleClick} className='item-container-btn'>Забронировать визит</button>
 		</div>
 	);
 };

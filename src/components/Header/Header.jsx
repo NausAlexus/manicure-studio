@@ -12,7 +12,7 @@ const NavLink = memo(({ link }) => (
     </li>
 ));
 
-function Header() {
+function Header(props) {
     // Состояния
     const [headerTop, setHeaderTop] = useState(0);
 
@@ -51,7 +51,7 @@ function Header() {
                         <li><a href={socialPath.path} aria-label="Email"><GrMailOption /></a></li>
                     </ul>
                 </div>
-                <button className='header-btn'>{headerBtnText}</button>
+                <button onClick={props.visibleClick} className='header-btn'>{headerBtnText}</button>
             </div>
         </header>
     );

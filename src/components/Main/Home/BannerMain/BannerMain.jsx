@@ -1,7 +1,7 @@
 import './BannerMain.css';
 import MainConfig from "../../../../config/main-config.json";
 
-function BannerMain() {
+function BannerMain(props) {
 
     // Данные_________________________________
     const bgUrl = MainConfig['banner-main'][0].url;
@@ -12,7 +12,7 @@ function BannerMain() {
             <div className='banner-main-wrapper'>
                 <p>{bannerMainData.text}</p>
                 <h1>{bannerMainData.title}</h1>
-                <button>{bannerMainData['text-btn']}</button>
+                <button onClick={props.visibleClick}>{bannerMainData['text-btn']}</button>
             </div>
         </div>
 	);

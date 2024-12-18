@@ -8,7 +8,7 @@ import ScrollToTop from '../../ScrollToTop';
 import Contacts from './Contacts/Contacts';
 import ItemConfig from "../../config/item-config.json";
 
-function Main() {
+function Main(props) {
 
 	// Данные
 	const ItemData = ItemConfig.item;
@@ -17,7 +17,7 @@ function Main() {
 		<>
 			<ScrollToTop />
 			<Routes>
-				<Route path="/" element = {<Home/>}/>
+				<Route path="/" element = {<Home visibleClick={props.visibleClick}/>}/>
 				<Route path="/services" element = {<Services/>}/>
 				<Route path="/setificat" element = {<GiftSertificat/>}/>
 				<Route path="/contacts" element = {<Contacts/>} />
@@ -29,6 +29,7 @@ function Main() {
                             titleItem={item.title}
                             descriptionItem={item.description}
                             serviceItem={item.services}
+                            visibleClick={props.visibleClick}
                         />} 
                     />
                 ))}

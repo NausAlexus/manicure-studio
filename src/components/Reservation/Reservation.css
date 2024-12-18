@@ -1,0 +1,32 @@
+.reservation-background{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.426);
+    z-index: 1500;
+}
+.reservation-container{
+    top: 50%;
+    left: 50%;
+    position: fixed;
+    width: 60vw;
+    height: 70vh;
+    background: var(--background-reservation);
+    z-index: 2000;
+    transition: transform 0.5s ease;
+}
+.reservation-close-btn{
+    position: absolute;
+    top: 12px;
+    right: 22px;
+    font-size: 40px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+@media (min-width: 1025px) {
+    .reservation-close-btn:hover {
+        transform: scale(1.2);
+    }
+}
