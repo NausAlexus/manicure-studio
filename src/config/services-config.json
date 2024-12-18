@@ -3,32 +3,32 @@
         {
             "title": "Маникюр",
             "img": "https://i.ibb.co/rZDt906/service-bg-1.webp",
-            "path": "#"
+            "path": "/manicure"
         },
         {
             "title": "Педикюр",
             "img": "https://i.ibb.co/VtDSmMw/service-bg-2.webp",
-            "path": "#"
+            "path": "/pedicure"
         },
         {
             "title": "Макияж",
             "img": "https://i.ibb.co/85dnk8Y/service-bg-3.webp",
-            "path": "#"
+            "path": "/makeup"
         },
         {
             "title": "Парикмахерские услуги",
             "img": "https://i.ibb.co/VmWqsLr/service-bg-4.webp",
-            "path": "#"
+            "path": "/hairstyles"
         },
         {
             "title": "Косметические услуги",
             "img": "https://i.ibb.co/s3YsMqn/service-bg-5.webp",
-            "path": "#"
+            "path": "/cosmetology"
         },
         {
             "title": "Наращивание ресниц",
             "img": "https://i.ibb.co/jZw6s3p/service-bg-6.webp",
-            "path": "#"
+            "path": "/eyelashes"
         }
     ],
     "services-reviews": [

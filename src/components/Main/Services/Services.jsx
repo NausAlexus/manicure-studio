@@ -1,5 +1,6 @@
 import './Services.css';
 import ServicesData from "../../../config/services-config.json";
+import { Link } from 'react-router-dom';
 
 function Services() {
 
@@ -16,7 +17,7 @@ function Services() {
 				<ul className='services-grid'>
 					{servicesItemsData.map((item) => (
 						<li key={item.title} className='services-item' style={{backgroundImage: `url("${item.img}")`}}>
-							<a className='services-link' href="#">{item.title}</a>
+							<Link className='services-link' to={item.path}>{item.title}</Link>
 						</li>
 					))}
 				</ul>
