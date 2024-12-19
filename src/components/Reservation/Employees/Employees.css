@@ -1,0 +1,40 @@
+.employees{
+    display: flex;
+    flex-direction: column;
+    padding-top: 5px;
+    padding-bottom: 15px;
+    border-top: 1px solid black;
+
+}
+
+.employees-name{
+    font-size: 20px;
+    font-weight: 600;
+}
+.employees-schedule{
+    margin-top: 15px;
+}
+.employees-role{
+    display: flex;
+    font-size: 15px;
+}
+.schedule-day{
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.schedule-time {
+    margin-right: 10px;
+
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px;
+    cursor: pointer;
+    
+}
+
+@media (min-width: 1025px) {
+    .schedule-time:hover{
+        background-color: var(--background-service-item-hover);
+    }
+}

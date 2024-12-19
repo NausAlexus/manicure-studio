@@ -16,6 +16,7 @@
     background: var(--background-reservation);
     z-index: 2000;
     transition: transform 0.5s ease;
+    overflow: auto;
 }
 .reservation-close-btn{
     position: absolute;
@@ -29,4 +30,10 @@
     .reservation-close-btn:hover {
         transform: scale(1.2);
     }
+}
+
+
+.reservation-content{
+    width: 90%;
+    margin: 0 auto;
 }

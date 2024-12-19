@@ -1,0 +1,22 @@
+.calendar-time{
+    display: flex;
+    gap: 100px;
+}
+.employee-time-block {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+.employee-time-block ul li{
+    border: 1px solid black;
+    margin-bottom: 5px;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+@media (min-width: 1025px) {
+    .employee-time-block ul li:hover{
+        background-color: var(--background-service-item-hover);
+    }
+}
