@@ -33,7 +33,7 @@ const DateAndTime = () => {
 
     return (
         <>
-            <h2>Выберите дату</h2>
+            <h2 className="reservation-title">Выберите дату</h2>
             <div className="calendar-time">
                 <div><Calendar onChange={onDateChange} value={selectedDate} /></div>     
                 {selectedDate && (

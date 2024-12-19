@@ -13,7 +13,7 @@ function MainMenu(props) {
                     <FaCalendarAlt />
                     Выбрать дату и время
                 </li>
-                <li>
+                <li onClick={() => props.handleMenuClick("servicesSelect")}>
                     <FaList />
                     Выбрать услуги
                 </li>

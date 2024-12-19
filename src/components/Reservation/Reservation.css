@@ -26,6 +26,11 @@
     cursor: pointer;
     transition: transform 0.3s ease;
 }
+.reservationTitle{
+    font-size: 32px;
+    text-align: center;
+    margin-top: 10px;
+}
 @media (min-width: 1025px) {
     .reservation-close-btn:hover {
         transform: scale(1.2);
