@@ -4,7 +4,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.426);
+    background: var(--background-reservation-space);
     z-index: 1500;
 }
 .reservation-container{
@@ -46,9 +46,32 @@
     position: fixed;
     bottom: 30px;
     right: 30px;
-    padding: 5px;
-    border-radius: 5px;
-    border: 1px black solid;
-    background-color: aqua;
+    border: 2px solid var(--color-header-btn);
     cursor: pointer;
+    width: 100px;
+    height: 30px;
+    font-size: 17px;
+    background-color: var(--background-header-btn);
+    color: var(--color-header-btn);
+    transition: all 0.3s ease;
+}
+@media (min-width: 1025px) {
+    .btn-next:hover {
+        background-color: var(--background-header-btn-hover);
+        color: var(--color-header-btn-hover);
+    }
+}
+
+.reservation-container::-webkit-scrollbar {
+    width: 10px;
+    background-color: rgb(238, 210, 255);
+}
+.reservation-container::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgb(241, 161, 255);
+}
+.reservation-container::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgb(238, 210, 255);
+    border-radius: 10px;
+    background-color: transparent;
 }

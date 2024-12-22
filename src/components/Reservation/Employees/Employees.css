@@ -3,8 +3,7 @@
     flex-direction: column;
     padding-top: 5px;
     padding-bottom: 15px;
-    border-top: 1px solid black;
-
+    border-top: 1px solid var(--color-border);
 }
 
 .employees-name{
@@ -25,15 +24,14 @@
 
 .schedule-time {
     margin-right: 10px;
-
-    border: 1px solid black;
+    border: 1px solid var(--color-border);
     border-radius: 10px;
     padding: 5px;
     cursor: pointer;
     
 }
 .schedule-time.selected {
-    background-color: #4caf50;
+    background-color: var(--background-employe-select);
     color: white;
 }
 
@@ -42,6 +40,6 @@
         background-color: var(--background-service-item-hover);
     }
     .schedule-time.selected:hover {
-        background-color: #45a049; /* Цвет для выделенного времени при наведении */
+        background-color: var(--background-employe-select-hover); /* Цвет для выделенного времени при наведении */
     }
 }

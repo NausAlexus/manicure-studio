@@ -43,7 +43,7 @@ function Reservation(props) {
             <div onClick={props.disvisibleClick} className='reservation-background' style={{ display: props.visible ? "block" : "none" }}></div>
             <div className='reservation-container' style={{ transform: `translate(-50%, -50%) scale(${props.visible ? 1 : 0})` }}>
                 <IoCloseSharp className='reservation-close-btn' onClick={props.disvisibleClick} />
-                <h3 className='reservationTitle'>Запись на еблю</h3>
+                <h3 className='reservationTitle'>Записаться на приём</h3>
                 <div className="reservation-content">
                     <MainMenu handleMenuClick={handleMenuClick} />
                     
