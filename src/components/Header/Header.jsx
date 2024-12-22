@@ -47,7 +47,7 @@ function Header(props) {
                 </nav>
                 <div className='header-social'>
                     <ul>
-                        <li><a href={socialPath.path} aria-label="Instagram"><FaInstagram /></a></li>
+                        <li><a onClick={props.handleSubmit} href={socialPath.path} aria-label="Instagram"><FaInstagram /></a></li>
                         <li><a href={socialPath.path} aria-label="Email"><GrMailOption /></a></li>
                     </ul>
                 </div>
