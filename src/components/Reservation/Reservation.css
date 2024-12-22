@@ -42,3 +42,13 @@
     width: 90%;
     margin: 0 auto;
 }
+.btn-next{
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px black solid;
+    background-color: aqua;
+    cursor: pointer;
+}

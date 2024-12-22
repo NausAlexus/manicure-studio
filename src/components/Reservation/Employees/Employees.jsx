@@ -1,8 +1,9 @@
 import ReservationConfig from "../../../config/reservation-config.json";
 import "./Employees.css";
 
-const Employees = () => {
+const Employees = (props) => {
     const reservationConfig = ReservationConfig["employees"];
+
 
     const daysOfWeekInRussian = {
         monday: "Понедельник",
@@ -13,6 +14,8 @@ const Employees = () => {
         saturday: "Суббота",
         sunday: "Воскресенье"
     };
+
+
 
     return (
         <>
@@ -34,9 +37,13 @@ const Employees = () => {
                             </div>
                             {/* Пробегаем по времени для каждого дня */}
                             {item.schedule[day].map((time, index) => (
-                                <span key={index} className="schedule-time">
-                                    {time}
-                                </span>
+                                <span
+                                key={index}
+                                className={`schedule-time ${props.selectedTime === time && props.selectedEmployee === item.id ? "selected" : ""}`} // Добавляем класс 'selected' если время выбрано
+                                onClick={() => props.handleTimeClick(time, item.id)} // Обрабатываем клик
+                            >
+                                {time}
+                            </span>
                             ))}
                         </div>
                     ))}

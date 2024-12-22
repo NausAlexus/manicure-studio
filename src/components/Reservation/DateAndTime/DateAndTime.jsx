@@ -7,9 +7,10 @@ import { useState } from "react";
 // Массив дней недели для соответствия числам
 const daysOfWeek = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
 
-const DateAndTime = () => {
+const DateAndTime = (props) => {
     const [selectedDate, setSelectedDate] = useState(null);
     const [availableTimes, setAvailableTimes] = useState([]);
+    const [selectedEmployee, setSelectedEmployee] = useState(null); // Состояние для выбранного сотрудника
 
     const employeesData = ReservationConfig["employees"]; // Данные сотрудников
 
@@ -23,12 +24,25 @@ const DateAndTime = () => {
         const times = employeesData.map((employee) => {
             const scheduleForDay = employee.schedule[dayOfWeek] || []; // Доступное время в выбранный день
             return {
+                id: employee.id, // Добавляем id сотрудника для дальнейшей идентификации
                 name: employee.name,
                 availableTimes: scheduleForDay,
             };
         }).filter(employee => employee.availableTimes.length > 0); // Убираем сотрудников без времени
 
         setAvailableTimes(times);
+    };
+
+    // Обработчик клика по времени
+    const handleTimeClick = (time, employeeId) => {
+        // Проверяем, если это время уже выбрано у другого сотрудника
+        if (selectedEmployee && props.selectedTime === time) {
+            // Если время уже выбрано, ничего не делаем
+            return;
+        }
+
+        setSelectedEmployee(employeeId); // Устанавливаем выбранного сотрудника
+        props.handleTimeClick(time, employeeId); // Передаем время и сотрудника в родительский компонент
     };
 
     return (
@@ -40,11 +54,17 @@ const DateAndTime = () => {
                     <div className="time-selection">
                         <h3>Доступное время:</h3>
                         {availableTimes.map((employee) => (
-                            <div key={employee.name} className="employee-time-block">
+                            <div key={employee.id} className="employee-time-block">
                                 <h4>{employee.name}</h4>
                                 <ul>
                                     {employee.availableTimes.map((time) => (
-                                        <li key={time}>{time}</li>
+                                        <li
+                                            key={time}
+                                            className={`schedule-time ${props.selectedTime === time && selectedEmployee === employee.id ? "selected" : ""}`}
+                                            onClick={() => handleTimeClick(time, employee.id)} // Устанавливаем id сотрудника при клике
+                                        >
+                                            {time}
+                                        </li>
                                     ))}
                                 </ul>
                             </div>

@@ -32,9 +32,16 @@
     cursor: pointer;
     
 }
+.schedule-time.selected {
+    background-color: #4caf50;
+    color: white;
+}
 
 @media (min-width: 1025px) {
     .schedule-time:hover{
         background-color: var(--background-service-item-hover);
+    }
+    .schedule-time.selected:hover {
+        background-color: #45a049; /* Цвет для выделенного времени при наведении */
     }
 }
