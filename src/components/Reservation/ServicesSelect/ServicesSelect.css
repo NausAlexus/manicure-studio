@@ -31,3 +31,20 @@
         background-color: var(--background-service-select-hover);
     }
 }
+
+
+/* ServicesSelect.css */
+.ServicesSelect {
+    cursor: pointer;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.ServicesSelect.selected {
+    background-color: var(--background-employe-select);
+    color: white;
+}
+
+
+
+

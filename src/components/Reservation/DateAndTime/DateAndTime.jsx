@@ -9,47 +9,70 @@ const daysOfWeek = ["sunday", "monday", "tuesday", "wednesday", "thursday", "fri
 
 const DateAndTime = (props) => {
     const [selectedDate, setSelectedDate] = useState(null);
-    const [availableTimes, setAvailableTimes] = useState([]);
-    const [selectedEmployee, setSelectedEmployee] = useState(null); // Состояние для выбранного сотрудника
+    const [availableTimes, setAvailableTimes] = useState([]); // Доступные времена для всех сотрудников
+    const [selectedTime, setSelectedTime] = useState(null); // Выбранное время
+    const [selectedEmployee, setSelectedEmployee] = useState(null); // Выбранный сотрудник
 
     const employeesData = ReservationConfig["employees"]; // Данные сотрудников
+    const currentDate = new Date(); // Текущая дата
 
+    // Функция для проверки, если время уже прошло
+    const isPastTime = (time) => {
+        const now = new Date();
+        const [hours, minutes] = time.split(":").map(Number); // Разделяем время по часам и минутам
+        const selectedTime = new Date(now);
+        selectedTime.setHours(hours, minutes, 0, 0);
+
+        return selectedTime < now; // Если время меньше текущего времени, оно прошло
+    };
+
+    // Обработчик изменения даты
     const onDateChange = (date) => {
         setSelectedDate(date);
 
-        // Получаем день недели из выбранной даты
-        const dayOfWeek = daysOfWeek[date.getDay()]; // getDay() возвращает число от 0 (воскресенье) до 6 (суббота)
+        const dayOfWeek = daysOfWeek[date.getDay()]; // Получаем день недели из выбранной даты
 
-        // Фильтруем сотрудников, которые работают в этот день
         const times = employeesData.map((employee) => {
-            const scheduleForDay = employee.schedule[dayOfWeek] || []; // Доступное время в выбранный день
+            const scheduleForDay = employee.schedule[dayOfWeek] || []; // Доступное время для выбранного дня
+
+            // Убираем прошедшие времена, если выбран текущий день
+            if (date.toDateString() === currentDate.toDateString()) {
+                const filteredTimes = scheduleForDay.filter(time => !isPastTime(time));
+                return {
+                    id: employee.id,
+                    name: employee.name,
+                    availableTimes: filteredTimes,
+                };
+            }
+
             return {
-                id: employee.id, // Добавляем id сотрудника для дальнейшей идентификации
+                id: employee.id,
                 name: employee.name,
                 availableTimes: scheduleForDay,
             };
-        }).filter(employee => employee.availableTimes.length > 0); // Убираем сотрудников без времени
+        }).filter(employee => employee.availableTimes.length > 0); // Убираем сотрудников без доступных времён
 
-        setAvailableTimes(times);
+        setAvailableTimes(times); // Перезаписываем доступные времена
     };
 
     // Обработчик клика по времени
     const handleTimeClick = (time, employeeId) => {
-        // Проверяем, если это время уже выбрано у другого сотрудника
-        if (selectedEmployee && props.selectedTime === time) {
-            // Если время уже выбрано, ничего не делаем
-            return;
-        }
+        // Обновляем состояние выбранного времени и сотрудника
+        setSelectedTime(time);
+        setSelectedEmployee(employeeId);
 
-        setSelectedEmployee(employeeId); // Устанавливаем выбранного сотрудника
-        props.handleTimeClick(time, employeeId); // Передаем время и сотрудника в родительский компонент
+        // Передаем выбранное время и сотрудника в родительский компонент
+        props.handleTimeClick(time, employeeId);
     };
 
     return (
         <>
             <h2 className="reservation-title">Выберите дату</h2>
             <div className="calendar-time">
-                <div><Calendar onChange={onDateChange} value={selectedDate} /></div>     
+                {/* Устанавливаем minDate, чтобы нельзя было выбрать прошедшие даты */}
+                <div>
+                    <Calendar onChange={onDateChange} value={selectedDate} minDate={currentDate} />
+                </div>
                 {selectedDate && (
                     <div className="time-selection">
                         <h3>Доступное время:</h3>
@@ -60,8 +83,12 @@ const DateAndTime = (props) => {
                                     {employee.availableTimes.map((time) => (
                                         <li
                                             key={time}
-                                            className={`schedule-time ${props.selectedTime === time && selectedEmployee === employee.id ? "selected" : ""}`}
-                                            onClick={() => handleTimeClick(time, employee.id)} // Устанавливаем id сотрудника при клике
+                                            className={`schedule-time ${
+                                                selectedTime === time && selectedEmployee === employee.id
+                                                    ? "selected"
+                                                    : ""
+                                            }`} // Добавляем класс 'selected' если время и сотрудник совпадают
+                                            onClick={() => handleTimeClick(time, employee.id)}
                                         >
                                             {time}
                                         </li>
