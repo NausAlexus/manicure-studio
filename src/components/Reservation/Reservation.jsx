@@ -10,7 +10,7 @@ import ReservationConfig from "./../../config/reservation-config.json";
 
 
 function Reservation(props) {
-    const [selectedMenu, setSelectedMenu] = useState(null); 
+    const [selectedMenu, setSelectedMenu] = useState("employee"); 
     const [selectedTime, setSelectedTime] = useState(null);
     const [selectedEmployee, setSelectedEmployee] = useState(null);
     const [chosenTimes, setChosenTimes] = useState([]); // Массив для выбранных времён
@@ -25,12 +25,12 @@ function Reservation(props) {
         setCurrentStep(menu);
     };
 
-    const handleTimeClick = (time, employeeId) => {
+    const handleTimeClick = (time, employeeId, service) => {
         // Найдем имя сотрудника по его ID
         const employee = employeesData.find(emp => emp.id === employeeId); // employeesData - это массив сотрудников
     
         // Очищаем массив и добавляем только нового сотрудника с выбранным временем и его именем
-        const updatedChosenTimes = [{ time, employeeId, employeeName: employee?.name }]; // Добавляем имя сотрудника
+        const updatedChosenTimes = [{ time, employeeId, employeeName: employee?.name}]; // Добавляем имя сотрудника
         
         setChosenTimes(updatedChosenTimes); // Обновляем массив выбранных данных
         setSelectedTime(time); 

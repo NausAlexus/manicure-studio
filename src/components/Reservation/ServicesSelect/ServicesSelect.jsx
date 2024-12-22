@@ -15,32 +15,12 @@ const ServicesSelect = ({ chosenTimes, setChosenTimes }) => {
     const handleServiceClick = (service) => {
         setSelectedService(service); // Устанавливаем выбранную услугу
     
-        // Обновляем массив выбранных данных, добавляя услугу к соответствующему элементу
-        const updatedChosenTimes = [...chosenTimes]; // Создаем копию текущего массива
+        // Обновляем массив chosenTimes, добавляя выбранную услугу
+        const updatedChosenTimes = chosenTimes.map((item) => {
+            return { ...item, service: service.title }; // Обновляем объект в массиве, добавляя услугу
+        });
     
-        // Ищем объект с нужным временем и сотрудником
-        const existingItemIndex = updatedChosenTimes.findIndex(item => 
-            item.time === service.time && item.employeeId === service.employeeId
-        );
-    
-        if (existingItemIndex !== -1) {
-            // Если такой объект уже существует, обновляем его
-            updatedChosenTimes[existingItemIndex] = {
-                ...updatedChosenTimes[existingItemIndex], // Копируем старые данные
-                service: service.title // Добавляем услугу
-            };
-        } else {
-            // Если такого объекта нет, создаем новый
-            updatedChosenTimes.push({
-                time: service.time,
-                employeeId: service.employeeId,
-                employeeName: service.employeeName, // Имя сотрудника
-                service: service.title // Добавляем услугу
-            });
-        }
-    
-        // Обновляем состояние выбранных данных
-        setChosenTimes(updatedChosenTimes);
+        setChosenTimes(updatedChosenTimes); // Обновляем состояние chosenTimes
     };
 
     const handleFinishClick = () => {
