@@ -26,7 +26,7 @@
     cursor: pointer;
     transition: transform 0.3s ease;
 }
-.reservationTitle{
+.reservation-title{
     font-size: 32px;
     text-align: center;
     margin-top: 10px;
@@ -35,11 +35,6 @@
     .reservation-close-btn:hover {
         transform: scale(1.2);
     }
-}
-
-.reservation-content{
-    width: 90%;
-    margin: 0 auto;
 }
 
 .reservation-container::-webkit-scrollbar {

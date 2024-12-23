@@ -1,29 +1,18 @@
 import './Reservation.css';
 import { IoCloseSharp } from "react-icons/io5";
 import PropTypes from 'prop-types';
-import MainMenu from './MainMenu/MainMenu';
-import { useState } from 'react';
-import Employees from './Employees/Employees';
-import DateAndTime from './DateAndTime/DateAndTime';
-import ServicesSelect from './ServicesSelect/ServicesSelect';
+import Menu from './Menu/Menu';
 
 function Reservation(props) {
-    const [selectedMenu, setSelectedMenu] = useState(null);
 
-    const handleMenuClick = (menu) => {
-        setSelectedMenu(menu); // Меняем выбранное меню
-    };
 	return (
         <>
             <div onClick={props.disvisibleClick} className='reservation-background' style={{ display: props.visible ? "block" : "none"}}></div>
             <div className='reservation-container' style={{ transform: `translate(-50%, -50%) scale(${props.visible ? 1 : 0})` }}>
                 <IoCloseSharp className='reservation-close-btn' onClick={props.disvisibleClick}/>
-                <h3 className='reservationTitle'>Запись на приём</h3>
+                <h3 className='reservation-title'>Запись на приём</h3>
                 <div className="reservation-content">
-                <MainMenu handleMenuClick={handleMenuClick} />
-                {selectedMenu === "employee" ? <Employees /> : null}
-                {selectedMenu === "dateAndTime" ? <DateAndTime /> : null}
-                {selectedMenu === "servicesSelect" ? <ServicesSelect /> : null}
+                    <Menu/>
                 </div>
             </div>
         </>
