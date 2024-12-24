@@ -14,8 +14,7 @@ function Menu() {
 		<div className='menu-container'>
 			{showService ? (<ServiceSelect handleShowService={handleShowService}/>
 		):(
-			<MasterSelect/>
-		)}
+			<MasterSelect/>)}
 		</div>
 	);
 };
