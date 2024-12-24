@@ -1,0 +1,23 @@
+.service-select-title{
+    font-size: 24px;
+}
+.service-select-items{
+    list-style: none;
+}
+.service-select-item{
+    text-align: center;
+    background: var(--background-item);
+    margin-top: 15px;
+    padding: 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+@media (min-width: 1025px) {
+    .service-select-item:hover {
+        transform: scale(1.01);
+        box-shadow: 25px 9px 55px -6px rgba(0,0,0,0.26);
+        -webkit-box-shadow: 25px 9px 55px -6px rgba(0,0,0,0.26);
+        -moz-box-shadow: 25px 9px 55px -6px rgba(0,0,0,0.26);
+    }
+}
