@@ -45,7 +45,7 @@ function Menu(props) {
                     <MasterSelect mastersData={mastersData} onMasterSelect={handleMasterSelect} />
                 )
             ) : (
-                <DataTimeSelect userData={props.userData} />
+                <DataTimeSelect userData={props.userData} disvisibleClick={props.disvisibleClick}/>
             )}
         </div>
     );

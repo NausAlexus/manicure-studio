@@ -1,0 +1,31 @@
+.data-time-select-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+.data-time-select-schedule{
+    margin-left: 100px;
+}
+.data-time-select-schedule-items{
+    list-style: none;
+}
+.data-time-select-schedule-item{
+    width: 80px;
+    height: 35px;
+    border: 2px solid var(--color-header-btn);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+}
+@media (min-width: 1025px) {
+    .data-time-select-schedule-item:hover{
+        background-color: var(--background-header-btn-hover);
+        color: var(--color-header-btn-hover);
+    }
+}
+.data-time-select-schedule-item:not(:first-child){
+    margin-top: 20px;
+}

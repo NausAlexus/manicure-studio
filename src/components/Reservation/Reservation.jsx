@@ -15,6 +15,7 @@ function Reservation(props) {
                     <Menu 
                         handleServiceSelect={props.handleServiceSelect}
                         handleMasterSelect={props.handleMasterSelect}
+                        disvisibleClick={props.disvisibleClick}
                         userData={props.userData}
                     />
                 </div>

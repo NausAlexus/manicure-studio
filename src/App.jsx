@@ -23,7 +23,6 @@ function App() {
 	}
 	const handleClickDisvisible = () => {
 		setIsVisibleReservation(false);
-		window.location.reload();
 	}
 
 
