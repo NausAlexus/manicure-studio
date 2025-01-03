@@ -12,7 +12,11 @@ function Reservation(props) {
                 <IoCloseSharp className='reservation-close-btn' onClick={props.disvisibleClick}/>
                 <h3 className='reservation-title'>Запись на приём</h3>
                 <div className="reservation-content">
-                    <Menu/>
+                    <Menu 
+                        handleServiceSelect={props.handleServiceSelect}
+                        handleMasterSelect={props.handleMasterSelect}
+                        userData={props.userData}
+                    />
                 </div>
             </div>
         </>

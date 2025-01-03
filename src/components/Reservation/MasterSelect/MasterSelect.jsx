@@ -1,27 +1,31 @@
 import './MasterSelect.css';
-import serviceData from '../../../config/reservation-config.json'
 
-function MasterSelect() {
-
-	const serviceMasterData = serviceData.manicure;
-
-	return (
-		<div className='master-select'>
+function MasterSelect({ mastersData, onMasterSelect }) {
+    return (
+        <div className='master-select'>
             <h3 className='master-select-title'>Выбор специалиста:</h3>
             <ul className='master-select-items'>
-				{serviceMasterData.map(el => (
-					<li className='master-select-item' key={el.id}>
-						<img className='master-select-img' src={el.avatar} alt="Master" />
-						<div>
-							<h3>{el.name}</h3>
-							<p>{el.role}</p>
-							<p >⭐{el.rating.toFixed(1)}</p>
-						</div>
-					</li>
-				))}
+                {mastersData.length > 0 ? (
+                    mastersData.map(el => (
+                        <li 
+                            className='master-select-item' 
+                            key={el.id}
+                            onClick={() => onMasterSelect(el)} // Выполнение функции обработки выбора мастера
+                        >
+                            <img className='master-select-img' src={el.avatar} alt="Master" />
+                            <div className='master-select-data'>
+                                <h3 className='master-select-data-title'>{el.name}</h3>
+                                <p className='master-select-data-role'>{el.role}</p>
+                                <p className='master-select-data-rating'>⭐{el.rating.toFixed(1)}</p>
+                            </div>
+                        </li>
+                    ))
+                ) : (
+                    <p>Нет доступных специалистов.</p>
+                )}
             </ul>
-		</div>
-	);
-};
+        </div>
+    );
+}
 
 export default MasterSelect;

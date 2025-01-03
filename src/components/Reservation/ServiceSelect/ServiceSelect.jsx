@@ -1,8 +1,7 @@
 import './ServiceSelect.css';
-import serviceData from '../../../config/services-config.json'
+import serviceData from '../../../config/services-config.json';
 
 function ServiceSelect(props) {
-
     const serviceDataTitle = serviceData['services-items'];
 
     return (
@@ -10,7 +9,17 @@ function ServiceSelect(props) {
             <h3 className='service-select-title'>Выбор услуги:</h3>
             <ul className='service-select-items'>
                 {serviceDataTitle.map(service => (
-                    <li onClick={props.handleShowService} className='service-select-item' key={service.title}>{service.title}</li>
+                    <li 
+                        onClick={() => {
+                            props.onServiceSelect(service.title.toLowerCase());
+                            if (props.handleServiceSelect) {
+                                props.handleServiceSelect(service.title.toLowerCase());
+                            }
+                        }}
+                        className='service-select-item' 
+                        key={service.title}>
+                            {service.title}
+                    </li>
                 ))}
             </ul>
         </div>
