@@ -7,6 +7,15 @@ import Reservation from './components/Reservation/Reservation';
 
 function App() {
 
+    const [userData, setUserData] = useState({
+        service: '',
+        master: '',
+		date: '',
+		time: ''
+    });
+
+	console.log(userData);
+
 	const[isVisibleReservation, setIsVisibleReservation] = useState(false);
 	
 	const handleClickVisible = () => {
@@ -14,13 +23,37 @@ function App() {
 	}
 	const handleClickDisvisible = () => {
 		setIsVisibleReservation(false);
+		window.location.reload();
 	}
+
+
+
+
+	const handleServiceSelect = (serviceTitle) => {
+        setUserData((prev) => ({
+            ...prev,
+            service: serviceTitle, // Обновляем выбранную услугу
+        }));
+    };
+	const handleMasterSelect = (selectedMaster) => {
+        setUserData((prev) => ({
+            ...prev,
+            master: selectedMaster, // Обновляем выбранного мастера
+        }));
+    };
+
+
+
+
 
 	return (
 		<>
 			<Reservation 
 				visible={isVisibleReservation}
 				disvisibleClick={handleClickDisvisible}
+				handleServiceSelect={handleServiceSelect}
+				handleMasterSelect={handleMasterSelect}
+				userData={userData}
 			/>
 			<Header visibleClick={handleClickVisible}/>
 			<Main 
