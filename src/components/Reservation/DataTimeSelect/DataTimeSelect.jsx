@@ -58,7 +58,12 @@ export default function DataTimeSelect(props) {
     };
 
     const handleDateChange = (date) => {
-        setSelectedDate(date); // Обновляем выбранную дату
+        setSelectedDate(date);
+        const formattedDate = `${String(date.getDate()).padStart(2, '0')}.${String(date.getMonth() + 1).padStart(2, '0')}.${date.getFullYear()}`;
+        props.handleDateChange(formattedDate); // Передаем отформатированную дату родительскому компоненту
+    };
+    const handleTimeClick = (time) => {
+        props.handleTimeChange(time); // Передаем выбранное время в родительский компонент
     };
 
     return (
@@ -76,7 +81,9 @@ export default function DataTimeSelect(props) {
                         <div>
                             <ul className='data-time-select-schedule-items'>
                                 {availableTimes.map((time, index) => (
-                                    <li onClick={props.disvisibleClick} className='data-time-select-schedule-item' key={index}>{time}</li>
+                                    <li className='data-time-select-schedule-item' key={index} onClick={() => handleTimeClick(time)}>
+                                        {time}
+                                    </li>
                                 ))}
                             </ul>
                         </div>

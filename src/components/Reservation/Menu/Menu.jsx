@@ -40,12 +40,22 @@ function Menu(props) {
         <div className='menu-container'>
             {selectedMaster === null ? (
                 selectedService === null ? (
-                    <ServiceSelect onServiceSelect={handleServiceSelect} />
+                    <ServiceSelect 
+                        onServiceSelect={handleServiceSelect} 
+                    />
                 ) : (
-                    <MasterSelect mastersData={mastersData} onMasterSelect={handleMasterSelect} />
+                    <MasterSelect 
+                        mastersData={mastersData} 
+                        onMasterSelect={handleMasterSelect} 
+                    />
                 )
             ) : (
-                <DataTimeSelect userData={props.userData} disvisibleClick={props.disvisibleClick}/>
+                <DataTimeSelect 
+                    userData={props.userData} 
+                    disvisibleClick={props.disvisibleClick} 
+                    handleDateChange={props.handleDateChange}
+                    handleTimeChange={props.handleTimeChange}
+                />
             )}
         </div>
     );

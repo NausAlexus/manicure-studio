@@ -26,8 +26,6 @@ function App() {
 	}
 
 
-
-
 	const handleServiceSelect = (serviceTitle) => {
         setUserData((prev) => ({
             ...prev,
@@ -40,9 +38,20 @@ function App() {
             master: selectedMaster, // Обновляем выбранного мастера
         }));
     };
-
-
-
+    // Добавляем метод для обновления даты
+    const handleDateChange = (date) => {
+        setUserData((prev) => ({
+            ...prev,
+            date: date // Обновляем дату
+        }));
+    };
+	// Функция для обновления времени
+    const handleTimeChange = (time) => {
+        setUserData((prev) => ({
+            ...prev,
+            time: time // Обновляем время
+        }));
+    };
 
 
 	return (
@@ -52,6 +61,8 @@ function App() {
 				disvisibleClick={handleClickDisvisible}
 				handleServiceSelect={handleServiceSelect}
 				handleMasterSelect={handleMasterSelect}
+				handleDateChange={handleDateChange}
+				handleTimeChange={handleTimeChange}
 				userData={userData}
 			/>
 			<Header visibleClick={handleClickVisible}/>

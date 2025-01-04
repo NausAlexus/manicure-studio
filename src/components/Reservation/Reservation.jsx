@@ -16,6 +16,8 @@ function Reservation(props) {
                         handleServiceSelect={props.handleServiceSelect}
                         handleMasterSelect={props.handleMasterSelect}
                         disvisibleClick={props.disvisibleClick}
+                        handleDateChange={props.handleDateChange}
+                        handleTimeChange={props.handleTimeChange}
                         userData={props.userData}
                     />
                 </div>
