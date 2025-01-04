@@ -24,6 +24,8 @@ export default function DataTimeSelect(props) {
 
     const [selectedDate, setSelectedDate] = useState(today);
     const [availableTimes, setAvailableTimes] = useState([]);
+    const [selectedTime, setSelectedTime] = useState(null); // Состояние для выбранного времени
+    const [showCalendar, setShowCalendar] = useState(true); // Состояние для отображения календаря
     const [message, setMessage] = useState('');
 
     useEffect(() => {
@@ -62,33 +64,56 @@ export default function DataTimeSelect(props) {
         const formattedDate = `${String(date.getDate()).padStart(2, '0')}.${String(date.getMonth() + 1).padStart(2, '0')}.${date.getFullYear()}`;
         props.handleDateChange(formattedDate); // Передаем отформатированную дату родительскому компоненту
     };
+
     const handleTimeClick = (time) => {
+        setSelectedTime(time); // Сохраняем выбранное время
         props.handleTimeChange(time); // Передаем выбранное время в родительский компонент
+        setShowCalendar(false); // Скрываем календарь и время
+    };
+
+    const handleSubmitRequest = () => {
+        // Логика для отправки заявки
+        alert('Заявка отправлена!');
     };
 
     return (
         <div className='data-time-select-container'>
-            <h3 className='data-time-select-title'>Выбор даты и времени:</h3>
+            {showCalendar && (
+                <h3 className='data-time-select-title'>Выбор даты и времени:</h3>
+            )}
             <div className='data-time-select-content'>
-                <Calendar
-                    minDate={minDate}
-                    maxDate={maxDate}
-                    onChange={handleDateChange}
-                    value={selectedDate}
-                />
+                {showCalendar && (
+                    <Calendar
+                        className='data-time-select-calendar'
+                        minDate={minDate}
+                        maxDate={maxDate}
+                        onChange={handleDateChange}
+                        value={selectedDate}
+                    />
+                )}
                 <div className='data-time-select-schedule'>
-                    {availableTimes.length > 0 ? (
-                        <div>
-                            <ul className='data-time-select-schedule-items'>
-                                {availableTimes.map((time, index) => (
-                                    <li className='data-time-select-schedule-item' key={index} onClick={() => handleTimeClick(time)}>
-                                        {time}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
+                    {selectedTime ? ( // Если выбрано время, показываем кнопку
+                        <button className='submit-request-button'>
+                            Отправить заявку
+                        </button>
                     ) : (
-                        <p>{message}</p>
+                        availableTimes.length > 0 ? (
+                            <div>
+                                <ul className='data-time-select-schedule-items'>
+                                    {availableTimes.map((time, index) => (
+                                        <li 
+                                            className='data-time-select-schedule-item' 
+                                            key={index} 
+                                            onClick={() => handleTimeClick(time)}
+                                        >
+                                            {time}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ) : (
+                            <p className='data-time-select-schedule-message'>{message}</p>
+                        )
                     )}
                 </div>
             </div>
