@@ -18,6 +18,9 @@ function Reservation(props) {
                         disvisibleClick={props.disvisibleClick}
                         handleDateChange={props.handleDateChange}
                         handleTimeChange={props.handleTimeChange}
+                        handleSubmit={props.handleSubmit}
+                        handleNameChange={props.handleNameChange}
+                        handlePhoneChange={props.handlePhoneChange}
                         userData={props.userData}
                     />
                 </div>

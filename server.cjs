@@ -8,8 +8,8 @@ const app = express();
 // Используйте CORS
 app.use(cors());
 
-const TELEGRAM_BOT_TOKEN = '7746770870:AAGPFcBMguxU9vzjXjDNzA284lxWgiQ8Bj'; // Замените на ваш токен
-const CHAT_ID = '-422579335'; // Замените на ваш ID чата
+const TELEGRAM_BOT_TOKEN = '7746770870:AAGPFcBMguxU9vzjXjDNzA284lxWgiQ8Bjo'; // Замените на ваш токен
+const CHAT_ID = '-4225793350'; // Замените на ваш ID чата
 
 app.use(bodyParser.json());
 
@@ -23,7 +23,13 @@ app.post('/send-data', (req, res) => {
         ___________________________
         Телефон: ${userData.phone};
         ___________________________
-        Комментарий: ${userData.comment};
+        Услуга: ${userData.service};
+        ___________________________
+        Мастер: ${userData.master};
+        ___________________________
+        Дата: ${userData.date};
+        ___________________________
+        Время: ${userData.time};
     `;
 
     axios.post(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {

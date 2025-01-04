@@ -55,6 +55,9 @@ function Menu(props) {
                     disvisibleClick={props.disvisibleClick} 
                     handleDateChange={props.handleDateChange}
                     handleTimeChange={props.handleTimeChange}
+                    handleNameChange={props.handleNameChange}
+                    handlePhoneChange={props.handlePhoneChange}
+                    handleSubmit={props.handleSubmit}
                 />
             )}
         </div>

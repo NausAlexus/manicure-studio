@@ -3,6 +3,7 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { useState, useEffect } from 'react';
 import DataTimeConfig from '../../../config/reservation-config.json';
+import { InputMask } from '@react-input/mask';
 
 const daysOfWeek = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
 
@@ -93,9 +94,30 @@ export default function DataTimeSelect(props) {
                 )}
                 <div className='data-time-select-schedule'>
                     {selectedTime ? ( // Если выбрано время, показываем кнопку
-                        <button className='submit-request-button'>
-                            Отправить заявку
-                        </button>
+                        <form className='Form' action='#' onSubmit={props.handleSubmit}>
+                            <input
+                                name="name"
+                                className="form-input form-user-name"
+                                type="text"
+                                placeholder="Введите ваше имя"
+                                required
+                                onChange={props.handleNameChange}
+                            />
+                            <InputMask
+                                name="phone"
+                                type="tel"
+                                mask="+375(__)-___-__-__" 
+                                replacement={{ _: /\d/ }}
+                                className="form-input form-user-tel"
+                                placeholder="+375(XX)-XXX-XX-XX"
+                                title="Введите ваш номер"
+                                required
+                                onChange={props.handlePhoneChange}
+                            />
+                            <button className='submit-request-button' type='submit'>
+                                Отправить заявку
+                            </button>
+                        </form>
                     ) : (
                         availableTimes.length > 0 ? (
                             <div>
