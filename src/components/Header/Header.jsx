@@ -1,9 +1,10 @@
-import './Header.css';
+import "./Header.css";
 import { FaInstagram } from "react-icons/fa6";
 import { GrMailOption } from "react-icons/gr";
 import HeaderConfig from "../../config/header-config.json";
-import { useState, useEffect, useRef, memo, useCallback } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect, useRef, memo, useCallback } from "react";
+import { Link } from "react-router-dom";
+import ButtonHeader from "./ButtonHeader/ButtonHeader";
 
 // Оптимизируем компонент NavLink______________
 const NavLink = memo(({ link }) => (
@@ -17,10 +18,10 @@ function Header(props) {
     const [headerTop, setHeaderTop] = useState(0);
 
     // Вывод данных из config
-    const logoText = HeaderConfig['header-logo'][0];
-    const navLinks = HeaderConfig['nav-link'];
-    const socialPath = HeaderConfig['nav-social'][0];
-    const headerBtnText = HeaderConfig['nav-btn'][0].text;
+    const logoText = HeaderConfig["header-logo"][0];
+    const navLinks = HeaderConfig["nav-link"];
+    const socialPath = HeaderConfig["nav-social"][0];
+    const headerBtnText = HeaderConfig["nav-btn"][0].text;
 
     // Функция обработки скролла
     const handleScroll = useCallback(() => {
@@ -28,33 +29,46 @@ function Header(props) {
     }, []);
 
     useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener("scroll", handleScroll);
         return () => {
-            window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener("scroll", handleScroll);
         };
     }, []);
 
     return (
-        <header className='header-container' style={{ top: `${headerTop}px`}}>
-            <Link to={logoText.path} className='header-logo'>{logoText.logo}</Link>
+        <header className="header-container" style={{ top: `${headerTop}px` }}>
+            <Link to={logoText.path} className="header-logo">
+                {logoText.logo}
+            </Link>
             <div className="header-content">
-                <nav className='nav'>
+                <nav className="nav">
                     <ul>
-                        {navLinks.map(link => (
+                        {navLinks.map((link) => (
                             <NavLink key={link.id} link={link} />
                         ))}
                     </ul>
                 </nav>
-                <div className='header-social'>
+                <div className="header-social">
                     <ul>
-                        <li><a href={socialPath.path} aria-label="Instagram"><FaInstagram /></a></li>
-                        <li><a href={socialPath.path} aria-label="Email"><GrMailOption /></a></li>
+                        <li>
+                            <a href={socialPath.path} aria-label="Instagram">
+                                <FaInstagram />
+                            </a>
+                        </li>
+                        <li>
+                            <a href={socialPath.path} aria-label="Email">
+                                <GrMailOption />
+                            </a>
+                        </li>
                     </ul>
                 </div>
-                <button onClick={props.visibleClick} className='header-btn'>{headerBtnText}</button>
+                <button onClick={props.visibleClick} className="header-btn">
+                    {headerBtnText}
+                </button>
             </div>
+            <ButtonHeader />
         </header>
     );
-};
+}
 
 export default Header;

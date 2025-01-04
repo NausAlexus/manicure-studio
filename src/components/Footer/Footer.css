@@ -47,3 +47,26 @@
         opacity: 0.5;
     }
 }
+
+
+/* для ноутбуков */
+@media (max-width: 1440px) {
+
+
+  }
+
+  /* для планшетов */
+@media (max-width: 1024px) {
+
+}
+
+@media (max-width: 700px) {
+    .footer-content{
+        gap: 30px;
+    }
+  }
+@media (max-width: 400px) {
+    .footer-socials{
+        margin-top: 15px;
+    }
+  }

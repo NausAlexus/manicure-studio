@@ -70,3 +70,36 @@
         color: var(--color-header-btn-hover);
     }
 }
+
+
+/* для ноутбуков */
+@media (max-width: 1540px) {
+.header-container{
+    width: 100%;
+    left: 0;
+    padding: 0 30px;
+    gap: 20px;
+}
+
+}
+
+/* для планшетов */
+@media (max-width: 1150px) {
+    .nav ul{
+        gap: 20px;
+    }
+    .header-content {
+        gap: 20px   ;
+    }
+    .nav ul li {
+        text-align: center;
+    }
+
+}
+
+@media (max-width: 800px) {
+    .nav ul{
+        display: none;
+    }
+
+}
