@@ -1,6 +1,6 @@
 import './MasterSelect.css';
 
-function MasterSelect({ mastersData, onMasterSelect }) {
+function MasterSelect({ mastersData, onMasterSelect, selectedMaster }) {
     return (
         <div className='master-select'>
             <h3 className='master-select-title'>Выбор специалиста:</h3>
@@ -8,7 +8,7 @@ function MasterSelect({ mastersData, onMasterSelect }) {
                 {mastersData.length > 0 ? (
                     mastersData.map(el => (
                         <li 
-                            className='master-select-item' 
+                            className={`master-select-item ${selectedMaster && selectedMaster.id === el.id ? 'selected' : ''}`} // Добавление класса
                             key={el.id}
                             onClick={() => onMasterSelect(el)} // Выполнение функции обработки выбора мастера
                         >

@@ -7,10 +7,17 @@ import serviceData from '../../../config/reservation-config.json';
 
 function Menu(props) {
     const [selectedService, setSelectedService] = useState('');
+    const [selectedMaster, setSelectedMaster] = useState(null); // Добавляем состояние для выбранного мастера
 
     const handleServiceSelect = (service) => {
         setSelectedService(service);
+        setSelectedMaster(null); // Сбрасываем выбранного мастера при смене услуги
         props.handleServiceSelect(service);
+    };
+
+    const handleMasterSelect = (master) => {
+        setSelectedMaster(master); // Сохраняем выбранного мастера
+        props.handleMasterSelect(master); // Передаем мастера в родительский компонент
     };
 
     const mastersData = selectedService === 'маникюр' ? serviceData.manicure :
@@ -24,14 +31,15 @@ function Menu(props) {
         <div className='menu-container'>
             {props.currentComponent === 'serviceSelect' && (
                 <ServiceSelect 
-                    onServiceSelect={handleServiceSelect}  // Обновлено
-                    selectedService={selectedService}       // Передаем состояние
+                    onServiceSelect={handleServiceSelect}
+                    selectedService={selectedService}
                 />
             )}
             {props.currentComponent === 'masterSelect' && (
                 <MasterSelect 
                     mastersData={mastersData} 
-                    onMasterSelect={props.handleMasterSelect} 
+                    onMasterSelect={handleMasterSelect} 
+                    selectedMaster={selectedMaster} // Передаем информацию о выбранном мастере
                 />
             )}
             {props.currentComponent === 'dataTimeSelect' && (

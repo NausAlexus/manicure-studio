@@ -27,3 +27,7 @@
 .master-select-data {
     margin-left: 20px;
 }
+.master-select-item.selected {
+    background-color: rgb(208, 32, 217);
+    border-radius: 20px;
+}
