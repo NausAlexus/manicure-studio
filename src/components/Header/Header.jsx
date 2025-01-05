@@ -1,3 +1,6 @@
+/* eslint-disable react/display-name */
+/* eslint-disable react/prop-types */
+
 import "./Header.css";
 import { FaInstagram } from "react-icons/fa6";
 import { GrMailOption } from "react-icons/gr";
@@ -5,6 +8,8 @@ import HeaderConfig from "../../config/header-config.json";
 import { useState, useEffect, useRef, memo, useCallback } from "react";
 import { Link } from "react-router-dom";
 import ButtonHeader from "./ButtonHeader/ButtonHeader";
+import { IoCloseSharp } from "react-icons/io5";
+import { RxHamburgerMenu } from "react-icons/rx";
 
 // Оптимизируем компонент NavLink______________
 const NavLink = memo(({ link }) => (
@@ -13,7 +18,14 @@ const NavLink = memo(({ link }) => (
     </li>
 ));
 
+
+
 function Header(props) {
+    const [headerOpen, setHeaderOpen] = useState(false);
+    
+    const handleClick = () => {
+        setHeaderOpen(!headerOpen)
+    }
     // Состояния
     const [headerTop, setHeaderTop] = useState(0);
 
@@ -40,11 +52,16 @@ function Header(props) {
             <Link to={logoText.path} className="header-logo">
                 {logoText.logo}
             </Link>
-            <div className="header-content">
+            <div className={`header-content header-open-btn ${headerOpen ? 'visible' : ''}`}>
+                <div className={`btn-close ${headerOpen ? 'visible' : ''}`}>
+                    <IoCloseSharp onClick={handleClick}/>
+                </div>
+                <div className={`header-open-background ${headerOpen ? 'visible' : ''}`} onClick={handleClick}></div>
+
                 <nav className="nav">
-                    <ul>
+                    <ul onClick={handleClick}>
                         {navLinks.map((link) => (
-                            <NavLink key={link.id} link={link} />
+                            <NavLink key={link.id} link={link}/>
                         ))}
                     </ul>
                 </nav>
@@ -66,7 +83,7 @@ function Header(props) {
                     {headerBtnText}
                 </button>
             </div>
-            <ButtonHeader />
+            <RxHamburgerMenu onClick={handleClick}  className="header-burger-btn"/>
         </header>
     );
 }
