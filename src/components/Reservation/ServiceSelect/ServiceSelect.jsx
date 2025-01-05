@@ -12,11 +12,8 @@ function ServiceSelect(props) {
                     <li 
                         onClick={() => {
                             props.onServiceSelect(service.title.toLowerCase());
-                            if (props.handleServiceSelect) {
-                                props.handleServiceSelect(service.title.toLowerCase());
-                            }
                         }}
-                        className='service-select-item' 
+                        className={`service-select-item ${props.selectedService === service.title.toLowerCase() ? 'selected' : ''}`} 
                         key={service.title}>
                             {service.title}
                     </li>

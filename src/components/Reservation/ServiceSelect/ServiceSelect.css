@@ -18,3 +18,7 @@
         background: rgb(254, 248, 255);
     }
 }
+.service-select-item.selected {
+    background-color: rgb(208, 32, 217);
+    color: white;
+}
