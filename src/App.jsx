@@ -17,7 +17,7 @@ function App() {
 
     const [formMessage, setFormMessage] = useState(''); // Добавляем состояние для сообщения формы
 
-    console.log(userData);
+    console.log(formMessage);
 
     const [isVisibleReservation, setIsVisibleReservation] = useState(false);
 
@@ -91,7 +91,7 @@ function App() {
         })
         .catch(error => {
             console.error('Ошибка при отправке данных:', error);
-            setFormMessage('Не удалось отправить заявку.'); // Устанавливаем сообщение об ошибке
+            setFormMessage('Не удалось отправить заявку.  Повторите позже.'); // Устанавливаем сообщение об ошибке
         });
     };
 

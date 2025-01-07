@@ -94,30 +94,40 @@ export default function DataTimeSelect(props) {
                 )}
                 <div className='data-time-select-schedule'>
                     {selectedTime ? ( // Если выбрано время, показываем кнопку
-                        <form className='Form' action='#' onSubmit={props.handleSubmit}>
-                            <input
-                                name="name"
-                                className="form-input form-user-name"
-                                type="text"
-                                placeholder="Введите ваше имя"
-                                required
-                                onChange={props.handleNameChange}
-                            />
-                            <InputMask
-                                name="phone"
-                                type="tel"
-                                mask="+375(__)-___-__-__" 
-                                replacement={{ _: /\d/ }}
-                                className="form-input form-user-tel"
-                                placeholder="+375(XX)-XXX-XX-XX"
-                                title="Введите ваш номер"
-                                required
-                                onChange={props.handlePhoneChange}
-                            />
-                            <button className='submit-request-button' type='submit'>
-                                Отправить заявку
-                            </button>
-                        </form>
+                        <div className='data-time-select-schedule-content'>
+                            <div>
+                                <h3>Текущая заявка:</h3>
+                                <p>Услуга: {props.userData.service};</p>
+                                <p>Матсер: {props.userData.master};</p>
+                                <p>Дата: {props.userData.date};</p>
+                                <p>Время: {props.userData.time}.</p>
+                            </div>
+                            <form className='Form' action='#' onSubmit={props.handleSubmit}>
+                                <h3>Оформление заявки:</h3>
+                                <input
+                                    name="name"
+                                    className="form-input form-user-name"
+                                    type="text"
+                                    placeholder="Введите ваше имя"
+                                    required
+                                    onChange={props.handleNameChange}
+                                />
+                                <InputMask
+                                    name="phone"
+                                    type="tel"
+                                    mask="+375(__)-___-__-__" 
+                                    replacement={{ _: /\d/ }}
+                                    className="form-input form-user-tel"
+                                    placeholder="+375(XX)-XXX-XX-XX"
+                                    title="Введите ваш номер"
+                                    required
+                                    onChange={props.handlePhoneChange}
+                                />
+                                <button className='submit-request-button' type='submit'>
+                                    Отправить заявку
+                                </button>
+                            </form>
+                        </div>
                     ) : (
                         availableTimes.length > 0 ? (
                             <div>
