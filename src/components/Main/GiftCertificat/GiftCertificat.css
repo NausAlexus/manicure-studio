@@ -40,3 +40,24 @@
     margin-bottom: 5px;
 }
 
+@media (max-width:768px) {
+    .certificat-content{
+        flex-direction: column;
+        gap: 50px;
+        
+    }
+    .certificat-content-left, .certificat-content-right{
+        width: 100%;
+    }
+    .certificat-content-right ol{
+        margin-left: 15px;
+    }
+    
+}
+@media (max-width:426px) {
+    .certificat-title{
+        font-size: 42px;
+    }
+
+}
+
