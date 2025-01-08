@@ -43,3 +43,37 @@
     cursor: pointer;
     color: var(--color-card-reviews-main);
 }
+
+
+
+
+@media (max-width:1024px) {
+    .reviews-main-container h3{
+        font-size: 42px;
+    }
+    .reviews-main-slider-wrapper{
+        text-align: left;
+        padding: 25px;
+
+        
+    }
+}
+
+
+@media (max-width:768px) {
+    .reviews-main-container{
+        margin-top: 50px;
+    }
+    .reviews{
+        font-size: 18px;
+    }
+
+}
+@media (max-width:426px) {
+    .reviews-main-container h3{
+        font-size: 32px;
+    }
+    .slider-item-wrapper{
+        height: 250px;
+    }
+}

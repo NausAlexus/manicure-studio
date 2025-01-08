@@ -27,3 +27,25 @@ body::-webkit-scrollbar-track {
     border-radius: 10px;
     background-color: transparent;
 }
+
+
+/* для ноутбуков */
+@media (max-width: 1540px) {
+    body{
+        padding: 0 30px;
+        width: 100%;
+    }
+
+
+}
+
+/* для планшетов */
+@media (max-width: 1024px) {
+
+}
+
+@media (max-width: 600px) {
+    body{
+        padding: 0 15px;
+    }
+}

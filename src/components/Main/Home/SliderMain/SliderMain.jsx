@@ -26,19 +26,19 @@ function SliderMain() {
                 className="slider"
                 breakpoints={{
                 0: {
-                    slidesPerView: 1, // 1 слайд от 0 до 768
+                    slidesPerView: 1.2, // 1 слайд от 0 до 768
                     spaceBetween: 20,
                 },
                 425: {
-                    slidesPerView: 2, // 2 слайд от 0 до 768
+                    slidesPerView: 2.2, // 2 слайд от 0 до 768
                     spaceBetween: 20,
                 },
                 768: {
-                    slidesPerView: 3, // 3 слайда от 768 до 1024
+                    slidesPerView: 3.2, // 3 слайда от 768 до 1024
                     spaceBetween: 20,
                 },
                 1024: {
-                    slidesPerView: 4, // 4 слайда от 1024 до 1400
+                    slidesPerView: 4.2, // 4 слайда от 1024 до 1400
                     spaceBetween: 30,
                 },
                 1600: {

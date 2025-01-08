@@ -16,17 +16,55 @@
     background: var(--background-reservation);
     z-index: 2000;
     transition: transform 0.5s ease;
+    overflow: auto;
 }
-.reservation-close-btn{
+.reservation-menu-block{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     top: 12px;
     right: 22px;
+}
+.reservation-menu-block-btn{
+    font-size: 35px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+.reservation-menu-block-btn:not(:first-child){
+    margin-left: 10px;
+}
+.reservation-close-btn{
+    margin-left: 70px;
     font-size: 40px;
     cursor: pointer;
     transition: transform 0.3s ease;
+}
+.reservation-title{
+    font-size: 32px;
+    text-align: center;
+    margin-top: 10px;
 }
 @media (min-width: 1025px) {
     .reservation-close-btn:hover {
         transform: scale(1.2);
     }
+}
+@media (min-width: 1025px) {
+    .reservation-menu-block-btn:hover {
+        transform: scale(0.9);
+    }
+}
+.reservation-container::-webkit-scrollbar {
+    width: 10px;
+    background-color: rgb(238, 210, 255);
+}
+.reservation-container::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgb(241, 161, 255);
+}
+.reservation-container::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgb(238, 210, 255);
+    border-radius: 10px;
+    background-color: transparent;
 }

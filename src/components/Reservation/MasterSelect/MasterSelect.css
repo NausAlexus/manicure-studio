@@ -1,0 +1,33 @@
+.master-select-title{
+    font-size: 24px;
+}
+.master-select-items{
+    list-style: none;
+    overflow: hidden;
+}
+.master-select-item{
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    transition: background 0.3s ease,
+                border-radius 0.3s ease;
+}
+@media (min-width: 1025px) {
+    .master-select-item:hover {
+        background: var(--background-master-select);
+        border-radius: 30px;
+    }
+}
+.master-select-img{
+    height: 120px;
+    border-radius: 20px;
+}
+.master-select-data {
+    margin-left: 20px;
+}
+.master-select-item.selected {
+    background-color: rgb(208, 32, 217);
+    border-radius: 20px;
+}

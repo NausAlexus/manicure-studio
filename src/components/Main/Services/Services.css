@@ -60,9 +60,65 @@
     flex-direction: column;
     justify-content: center;
 }
-.services-reviews-text{
+.services-reviews-text {
     font-size: 42px;
 }
-.services-reviews-name{
+.services-reviews-name {
     margin-top: 6px;
+}
+
+@media (max-width: 1200px) {
+    .services-link {
+        font-size: 55px;
+    }
+}
+@media (max-width: 1024px) {
+    .services-link {
+        font-size: 45px;
+    }
+    .services-reviews{
+        padding: 50px 50px;
+    }
+    .services-reviews-img{
+        width: 100%;
+        object-fit: cover;
+    }
+    .services-reviews-content{
+        right: 30px;
+    }
+}
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .services-reviews-content{
+        width: 97%;
+        left: 1.5%;
+        padding: 30px;
+        height: 70%;
+    }
+    .services-reviews{
+        padding: 25px 25px;
+    }
+    .services-reviews-text{
+        font-size: 42px;
+    }
+
+}
+@media (max-width: 426px) {
+    .services-link {
+        font-size: 32px;
+    }
+    .services-item{
+        height: 300px;
+    }
+    .services-reviews-content{
+        height: 60%;
+    }
+    .services-reviews-text{
+        font-size: 32px;
+    }
+    .services-reviews-content{
+        padding: 20px;
+    }
 }

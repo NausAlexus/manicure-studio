@@ -7,6 +7,8 @@
     justify-content: space-between;
     position: fixed;
     transition: top 0.3s ease-in;
+    z-index: 100;
+
 }
 .header-logo {
     font-size: 32px;
@@ -47,12 +49,22 @@
 .nav ul li {
     transition: transform 0.3s ease;
 }
+
+
 @media (min-width: 1025px) {
     .header-logo:hover,
     .nav ul li:hover,
     .header-social ul li:hover {
         transform: translateY(-3px);
     }
+}
+
+
+
+
+
+.header-burger-btn{
+    font-size: 30px;
 }
 .header-btn {
     border: 2px solid var(--color-header-btn);
@@ -64,9 +76,122 @@
     color: var(--color-header-btn);
     transition: all 0.3s ease;
 }
+
 @media (min-width: 1025px) {
     .header-btn:hover {
         background-color: var(--background-header-btn-hover);
         color: var(--color-header-btn-hover);
     }
 }
+
+/* для ноутбуков */
+@media (max-width: 1540px) {
+    .header-container {
+        width: 100%;
+        left: 0;
+        padding: 0 30px;
+        gap: 20px;
+    }
+}
+
+/* для планшетов */
+@media (max-width: 1150px) {
+    .nav ul {
+        gap: 20px;
+    }
+    .header-content {
+        gap: 20px;
+    }
+    .nav ul li {
+        text-align: center;
+    }
+}
+
+@media (min-width: 801px) {
+    .header-burger-btn {
+        display: none;
+    }
+    .btn-close{
+        display: none;
+    }
+}
+
+@media (max-width: 800px) {
+    .header-open-btn {
+        flex-direction: column;
+        height: 100%;
+        width: 70%;
+        position: fixed;
+        z-index: 10000;
+        right: 0;
+        top: 0;
+        justify-content: flex-start;
+        gap: 50px;
+        border-left: 1px solid rgba(0, 0, 0, 0.5);
+        padding: 10px;
+
+        background-color: var(--background);
+
+        visibility: hidden;
+        opacity: 0;
+        transition: all 0.3s ease, transform 0.3s ease;
+    }
+    .header-open-btn.visible {
+            opacity: 1;
+            visibility: visible;
+            display: flex;
+
+    }
+
+    .header-open-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 30%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(5px);
+        opacity: 0;
+        transition: all 0.5s ease;
+        visibility: hidden;
+    }
+
+    .header-open-background.visible {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .nav ul {
+        flex-direction: column;
+        gap: 50px;
+        margin-top: 100px;
+    }
+
+    .btn-close {
+        width: 100%;
+        display: flex;
+        right: 0;
+        position: relative;
+        visibility: hidden;
+    }
+    .btn-close.visible{
+        visibility: visible;
+    }
+    .btn-close svg {
+        margin-top: 20px;
+        margin-right: 15px;
+        font-size: 30px;
+        position: absolute;
+        right: 0;
+    }
+}
+
+
+
+
+
+
+
+
+
+

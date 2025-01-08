@@ -39,3 +39,15 @@
         color: var(--color-header-btn-hover);
     }
 }
+@media (max-width:1024px) {
+    .banner-main-wrapper h1{
+        font-size: 52px;
+        text-align: center;
+    }
+}
+@media (max-width:426px) {
+    .banner-main-wrapper h1{
+        font-size: 42px;
+        text-align: center;
+    }
+}

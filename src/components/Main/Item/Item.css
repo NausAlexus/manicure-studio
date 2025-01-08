@@ -48,3 +48,41 @@
         color: var(--color-header-btn-hover);
     }
 }
+
+@media (max-width:840px) {
+    .item-content{
+        width: 100%;
+    }
+    
+}
+@media (max-width:769px) {
+    .item-container-title{
+        font-size: 42px;
+    }
+    .item-container-description{
+        font-size: 20px;
+    }
+    .item-content{
+        padding: 30px 10px;
+        
+    }
+    .no-wrap {
+        display: block;
+        white-space: normal;
+    }
+    
+}
+
+@media (max-width:426px) {
+    .item-content li{
+        font-size: 18px;
+    }
+
+    .item-container-description{
+        font-size: 20px;
+    }
+    
+}
+
+
+

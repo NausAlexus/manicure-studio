@@ -1,0 +1,24 @@
+.service-select-title{
+    font-size: 24px;
+}
+.service-select-items{
+    list-style: none;
+}
+.service-select-item{
+    text-align: center;
+    background: var(--background-item);
+    margin-top: 15px;
+    padding: 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+@media (min-width: 1025px) {
+    .service-select-item:hover {
+        background: rgb(254, 248, 255);
+    }
+}
+.service-select-item.selected {
+    background-color: rgb(208, 32, 217);
+    color: white;
+}
