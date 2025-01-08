@@ -8,7 +8,7 @@ function Item(props) {
 				<ul>
 					{props.serviceItem.map(item => (
 						<li key={item.name}>
-							{item.name} | {item.price} бел.руб.
+							{item.name} |   <span className='no-wrap'>{item.price} бел.руб.</span>
 						</li>
 					))}
 				</ul>
