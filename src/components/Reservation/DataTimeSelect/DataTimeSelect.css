@@ -5,9 +5,15 @@
     margin-top: 30px;
 }
 .data-time-select-schedule{
-    margin-left: 100px;
+    width: 200px;
+}
+.data-time-select-calendar{
+    margin-right: 100px;
 }
 .data-time-select-schedule-items{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     list-style: none;
 }
 .data-time-select-schedule-item{
@@ -28,4 +34,46 @@
 }
 .data-time-select-schedule-item:not(:first-child){
     margin-top: 20px;
+}
+.submit-request-button{
+    border: 2px solid var(--color-header-btn);
+    cursor: pointer;
+    width: 100%;
+    height: 50px;
+    font-size: 17px;
+    background-color: var(--background-header-btn);
+    color: var(--color-header-btn);
+    transition: all 0.3s ease;
+}
+@media (min-width: 1025px) {
+    .submit-request-button:hover {
+        background-color: var(--background-header-btn-hover);
+        color: var(--color-header-btn-hover);
+    }
+}
+.Form{
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.form-input{
+    width: 100%;
+    height: 30px;
+    border: 2px solid var(--color-header-btn);
+    background-color: transparent;
+}
+.form-user-tel{
+    margin-bottom: 40px;
+    margin-top: 10px;
+}
+.data-time-select-calendar .react-calendar__tile--now {
+    background-color: rgba(232, 174, 248, 0.537) !important;
+}
+.data-time-select-calendar .react-calendar__tile--active {
+    background-color: rgb(208, 32, 217) !important;
+    color: white !important;
+}
+.data-time-select-calendar .react-calendar__tile--active:not(.react-calendar__tile--now) {
+    background: rgb(208, 32, 217) !important;
 }
