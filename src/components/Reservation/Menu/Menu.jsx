@@ -52,6 +52,7 @@ function Menu(props) {
                     handlePhoneChange={props.handlePhoneChange}
                     handleSubmit={props.handleSubmit}
                     handleClose={props.handleClose}
+                    handleClickVisiblePopUp={props.handleClickVisiblePopUp}
                 />
             )}
         </div>

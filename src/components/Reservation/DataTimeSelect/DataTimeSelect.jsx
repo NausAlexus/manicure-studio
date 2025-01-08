@@ -76,6 +76,9 @@ export default function DataTimeSelect(props) {
         e.preventDefault();
         props.handleSubmit(e)
         props.handleClose()
+        setTimeout(() => {
+            props.handleClickVisiblePopUp();
+        }, 2000);
     }
 
     return (

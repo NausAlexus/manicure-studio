@@ -4,6 +4,7 @@ import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import Main from './components/Main/Main';
 import Reservation from './components/Reservation/Reservation';
+import PopUp from './components/Reservation/PopUp/PopUp';
 
 function App() {
     const [userData, setUserData] = useState({
@@ -20,7 +21,17 @@ function App() {
     console.log(formMessage);
 
     const [isVisibleReservation, setIsVisibleReservation] = useState(false);
+    const [isVisiblePopUp, setIsVisiblePopUp] = useState(false);
 
+    const handleClickDisvisiblePopUp = () => {
+        setIsVisiblePopUp(false);
+    }
+    const handleClickVisiblePopUp = () => {
+        setIsVisiblePopUp(true);
+        setTimeout(() => {
+            handleClickDisvisiblePopUp()
+        }, 2000)
+    }
     const handleClickVisible = () => {
         setIsVisibleReservation(true);
     }
@@ -107,13 +118,18 @@ function App() {
 				handleSubmit={handleSubmit}
 				handleNameChange={handleNameChange}
 				handlePhoneChange={handlePhoneChange}
+                handleClickVisiblePopUp={handleClickVisiblePopUp}
 				userData={userData}
 			/>
+            <PopUp 
+                formMessage={formMessage}
+                isVisiblePopUp={isVisiblePopUp}
+            />
 			<Header visibleClick={handleClickVisible}/>
 			<Main 
 				visibleClick={handleClickVisible}
 			/>
-			<Footer />
+			<Footer/>
 		</>
 	);
 };

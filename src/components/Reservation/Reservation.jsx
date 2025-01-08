@@ -65,6 +65,7 @@ function Reservation(props) {
                         selectedMaster={selectedMaster} // Передаем выбранного мастера
                         currentComponent={currentComponent} // Передаем текущий компонент
                         handleClose={handleClose}
+                        handleClickVisiblePopUp={props.handleClickVisiblePopUp}
                     />
                 </div>
             </div>
