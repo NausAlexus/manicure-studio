@@ -64,6 +64,7 @@ function Reservation(props) {
                         selectedService={selectedService} // Передаем выбранный сервис
                         selectedMaster={selectedMaster} // Передаем выбранного мастера
                         currentComponent={currentComponent} // Передаем текущий компонент
+                        handleClose={handleClose}
                     />
                 </div>
             </div>

@@ -72,10 +72,11 @@ export default function DataTimeSelect(props) {
         setShowCalendar(false); // Скрываем календарь и время
     };
 
-    const handleSubmitRequest = () => {
-        // Логика для отправки заявки
-        alert('Заявка отправлена!');
-    };
+    const handleCloseForm = (e) => {
+        e.preventDefault();
+        props.handleSubmit(e)
+        props.handleClose()
+    }
 
     return (
         <div className='data-time-select-container'>
@@ -102,7 +103,7 @@ export default function DataTimeSelect(props) {
                                 <p>Дата: {props.userData.date};</p>
                                 <p>Время: {props.userData.time}.</p>
                             </div>
-                            <form className='Form' action='#' onSubmit={props.handleSubmit}>
+                            <form className='Form' action='#' onSubmit={handleCloseForm}>
                                 <h3>Оформление заявки:</h3>
                                 <input
                                     name="name"

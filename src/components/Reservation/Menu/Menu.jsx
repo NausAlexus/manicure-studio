@@ -51,6 +51,7 @@ function Menu(props) {
                     handleNameChange={props.handleNameChange}
                     handlePhoneChange={props.handlePhoneChange}
                     handleSubmit={props.handleSubmit}
+                    handleClose={props.handleClose}
                 />
             )}
         </div>
