@@ -8,8 +8,8 @@ const app = express();
 // Используйте CORS
 app.use(cors());
 
-const TELEGRAM_BOT_TOKEN = '7746770870:AAGPFcBMguxU9vzjXjDNzA284lxWgiQ8Bj'; // Замените на ваш токен
-const CHAT_ID = '-422579335'; // Замените на ваш ID чата
+const TELEGRAM_BOT_TOKEN = 'ТОКЕН ВАШЕГО БОТА'; // Замените на ваш токен
+const CHAT_ID = 'ID ВАШЕГО ЧАТА'; // Замените на ваш ID чата
 
 app.use(bodyParser.json());
 
