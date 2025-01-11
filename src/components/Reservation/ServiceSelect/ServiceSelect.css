@@ -22,3 +22,10 @@
     background-color: rgb(208, 32, 217);
     color: white;
 }
+
+@media (max-width: 500px) {
+
+    .service-select-title {
+        font-size: 20px;
+    }
+}
