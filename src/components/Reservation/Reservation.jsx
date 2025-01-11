@@ -42,7 +42,7 @@ function Reservation(props) {
             <div onClick={props.disvisibleClick} className='reservation-background' style={{ display: props.visible ? "block" : "none"}}></div>
             <div className='reservation-container' style={{ transform: `translate(-50%, -50%) scale(${props.visible ? 1 : 0})` }}>
                 <div className='reservation-menu-block'>
-                    <div>
+                    <div className='menu-block-btn'>
                         <MdOutlineAddLink className='reservation-menu-block-btn' onClick={() => switchComponent('serviceSelect')} />
                         <IoMdPeople className='reservation-menu-block-btn' onClick={() => switchComponent('masterSelect')} />
                         <HiMiniCalendar className='reservation-menu-block-btn' onClick={() => switchComponent('dataTimeSelect')} />
