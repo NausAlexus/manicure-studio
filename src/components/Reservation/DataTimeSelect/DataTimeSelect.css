@@ -77,3 +77,38 @@
 .data-time-select-calendar .react-calendar__tile--active:not(.react-calendar__tile--now) {
     background: rgb(208, 32, 217) !important;
 }
+
+
+
+@media (max-width:1024px) {
+    .data-time-select-calendar{
+        margin-right: 10px;
+    }
+
+    
+}
+
+@media (max-width:500px) {
+    .data-time-select-content{
+        flex-direction: column;
+        gap: 20px   ;
+        align-items: flex-start;
+    }
+
+    .data-time-select-schedule-items{
+        width: 80vw;
+        gap: 5px;
+        align-items: flex-end;
+        flex-direction: row;
+        flex-wrap: wrap;
+       
+    }
+    .react-calendar__navigation button{
+        min-width: 30px !important; 
+    }
+    .menu-container{
+        padding: 20px 15px;
+    }
+
+    
+}
